@@ -1,0 +1,112 @@
+﻿@model IEnumerable<WebApplication1.Models.SanPham>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/Style/admin.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <a href="@Url.Action("Index","Admin")" class="item">
+                <img class="icon" src="~/Image/icon_admin1.png" alt="">
+                <div style="list-style: bold;font-weight: 600; font-size: 24px;" class="text">
+                    Admin website
+
+                </div>
+            </a>
+            <hr>
+            <a href="" class="item">
+                <img class="icon" src="~/Image/icon_product.png" alt="">
+                <div class="text">
+                    Sản phẩm
+
+                </div>
+            </a>
+            <a href="" class="item">
+                <img class="icon" src="~/Image/icon_khachhang.jpg" alt="">
+                <div class="text">
+                    Thống tin khách hàng
+
+                </div>
+            </a>
+            <a href="" class="item">
+                <img class="icon" src="~/Image/icon_thongke.jpg" alt="">
+                <div class="text">
+                    Thống kê doanh số
+
+                </div>
+            </a>
+        </div>
+        <div class="nav">
+            <div class="content">
+                <h1>Quản lí sản phẩm</h1>
+
+                <button>
+                    <a class="Newitem-Button" href="@Url.Action("Create","QLSP")">Thêm Mới</a>
+                </button>
+                <div class="content_table">
+                    <table id="myTable" class="display">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>TenSP</th>
+                                <th>Giá Bán</th>
+                                <th>AnhMinhHoa</th>
+                                <th>Mật khẩu</th>
+                                <th>SDT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- code hiển thị data -->
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.IDUser)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.TenKH)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.GioiTinh)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.SDT)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.MatKhau)</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!--Sử dụng thư viện chart để vẽ biểu đồ-->
+                </main>
+
+                <footer>
+                    <p>Địa chỉ: 828 Sư Vạn Hạnh</p>
+                    <p>Tel: +28 999 888 555</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+
+
+<script>
+
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+</script>
+

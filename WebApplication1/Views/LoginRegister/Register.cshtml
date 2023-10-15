@@ -1,0 +1,177 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+@{
+    ViewBag.Title = "Register";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/Style/login-register.css">
+</head>
+<body>
+    <style>
+        body {
+            background: url(/Image/bg_ip14.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            overflow: hidden;
+        }
+        .container {
+            background-image: url("/Images/bg_login.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100%;
+        }
+
+        .login-box {
+            position: relative;
+        }
+
+        .login_box_container {
+            position: absolute;
+            left: 550px;
+            height: 570px;
+            width: 450px;
+            margin-top: 100px;
+            background-color: white;
+            color: black;
+            align-items: center;
+            box-shadow: 1px 1px 1px 1px grey;
+            border-radius: 5%;
+            animation: fadein 1s linear;
+        }
+
+        .nav {
+            position: absolute;
+            margin-top: 39px;
+            margin-left: 50px;
+        }
+
+        .nav_header {
+            margin-bottom: 40px;
+            margin-left: 100px;
+        }
+
+        .inputGroup {
+            position: relative;
+        }
+
+            .inputGroup input {
+                margin-bottom:20px;
+                outline: none;
+                border: 2px solid rgb(200, 200, 200);
+                padding: 0.9em;
+                border-radius: 30px;
+                background-color: transparent;
+                width: 333px;
+            }
+
+            .inputGroup label {
+                position: absolute;
+                top: 0;
+                left: 0;
+                margin-left: 10px;
+                padding: 10px;
+                transition: .5s;
+                background-color: transparent;
+            }
+
+            .inputGroup :is(input:focus, input:valid) ~ label {
+                transform: translateY(-50%) scale(.9);
+                margin: 0em;
+                margin-left: 1.3em;
+                padding: 0.4em;
+                background-color: #fff;
+            }
+
+            .inputGroup :is(input:focus, input:valid) {
+                border-color: rgb(150, 150, 200);
+            }
+        .add_to_cart_btn {
+            margin-top: 10px;
+            padding: 10px;
+            width: 360px;
+            border-radius: 30px;
+            border: 2px solid rgb(247, 247, 11);
+            background-color: rgb(241, 241, 128);
+        }
+
+            .add_to_cart_btn:hover {
+                box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            }
+
+
+            .add_to_cart_btn:hover {
+                animation: shake 0.3s ease-in-out;
+            }
+
+            .add_to_cart_btn:hover {
+                color: #000;
+            }
+
+            .add_to_cart_btn:hover {
+                transform: scale(1);
+                background-color: #fff;
+            }
+
+        }
+
+
+    </style>
+    <div class="container">
+        @*<img class="img_bg" src="~/Images/bg_login.png" alt="">*@
+        <div class="login-box">
+            <div class="login_box_container">
+                <div class="nav">
+                    <div class="nav_header">
+                        <h3 style="margin-left:17px;">Tạo tài khoản</h3>
+                    </div>
+                    @using (Html.BeginForm("Register", "LoginRegister"))
+                    {
+                        @Html.ValidationSummary(true)
+                        <div style="" class="inputGroup">
+                            @Html.TextBox("Email", "", new { @class = "form-control", @id = "email", required = "required", name = "Email" })
+                            <label for="name">Email</label>
+                        </div>
+                        <div class="inputGroup">
+                            @Html.Password("MatKhau", null, new { @class = "form-control", @id = "matkhau", required = "required", maxlength = "20", name = "MatKhau" })
+                            <label for="password">Mật khẩu</label>
+                        </div>
+                        <div class="inputGroup">
+                            @Html.Password("MatKhau", null, new { @class = "form-control", @id = "matkhau", required = "required", maxlength = "20", name = "MatKhau" })
+                            <label for="password">Nhập lại mật khẩu</label>
+                        </div>
+                        <div class="inputGroup">
+                            @Html.TextBox("GioiTinh", null, new { @class = "form-control", @id = "tenkh", required = "required", maxlength = "20", name = "GioiTinh" })
+                            <label for="name">Giới tính</label>
+                        </div>
+                        <div class="inputGroup">
+                            @Html.TextBox("TenKH", null, new { @class = "form-control", @id = "matkhau", required = "required", maxlength = "20", name = "TenKH" })
+                            <label for="name">Tên khách hàng</label>
+                        </div>
+                        <div class="inputGroup">
+                            @Html.TextBox("SDT", null, new { @class = "form-control", @id = "matkhau", required = "required", maxlength = "20", name = "SDT" })
+                            <label for="number">SDT</label>
+                        </div>
+                        <button class="add_to_cart_btn" type="submit">
+                            <a class="button_top">Đăng Nhập</a>
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
