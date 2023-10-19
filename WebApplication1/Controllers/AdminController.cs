@@ -9,7 +9,7 @@ namespace WebApplication1.Controllers
 {
     public class AdminController : Controller
     {
-        CNPMNC_lt_1Entities db = new CNPMNC_lt_1Entities();
+        CNPMNC_ltEntities db = new CNPMNC_ltEntities();
 
         // GET: Admin
         public ActionResult Index()
@@ -21,5 +21,6 @@ namespace WebApplication1.Controllers
             }
             return RedirectToAction("Login", "LoginRegister");
         }
+       
     }
 }

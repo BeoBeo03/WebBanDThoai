@@ -40,7 +40,7 @@
         .login_box_container {
             position: absolute;
             left: 550px;
-            height: 570px;
+            height: 590px;
             width: 450px;
             margin-top: 100px;
             background-color: white;
@@ -163,8 +163,14 @@
                             @Html.TextBox("SDT", null, new { @class = "form-control", @id = "matkhau", required = "required", maxlength = "20", name = "SDT" })
                             <label for="number">SDT</label>
                         </div>
+                        <div style="float:right;margin-right:44px;" class="btn_login">
+                            <a style="text-decoration: none; list-style: none; color: rgb(247, 247, 11)" href="@Url.Action("Login","LoginRegister")">
+                                <span>Đăng nhập ngay!!</span>
+                            </a>
+                            
+                        </div>
                         <button class="add_to_cart_btn" type="submit">
-                            <a class="button_top">Đăng Nhập</a>
+                            <a class="button_top">Đăng ký</a>
                         </button>
                     }
                 </div>

@@ -137,16 +137,22 @@
                     @using (Html.BeginForm("Login", "LoginRegister"))
                     {
                         @Html.ValidationSummary(true)
-                <div style="margin-bottom: 15px;" class="inputGroup">
-                    @Html.TextBox("Email", "", new { @class = "form-control", @id = "email", required = "required", name = "Email" })
-                    <label for="name">Email</label>
-                </div>
+                        <div style="margin-bottom: 15px;" class="inputGroup">
+                            @Html.TextBox("Email", "", new { @class = "form-control", @id = "email", required = "required", name = "Email" })
+                            <label for="name">Email</label>
+                        </div>
                         <div class="inputGroup">
                             @Html.Password("MatKhau", null, new { @class = "form-control", @id = "matkhau", required = "required", maxlength = "20", name = "MatKhau" })
                             <label for="password">Mật khẩu</label>
                         </div>
+                        <div style="float:right;margin-right:44px;margin-top:10px;" class="btn_login">
+                            <a style="text-decoration: none; list-style: none; color: rgb(247, 247, 11)" href="@Url.Action("Register","LoginRegister")">
+                                <span>Đăng kí ngay!!</span>
+                            </a>
+
+                        </div>
                         <button class="add_to_cart_btn" type="submit">
-                            <a class="button_top" >Đăng Nhập</a>
+                            <a class="button_top">Đăng Nhập</a>
                         </button>
                     }
                 </div>

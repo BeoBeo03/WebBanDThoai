@@ -1,0 +1,190 @@
+﻿@model WebApplication1.Models.SanPham
+<div style="margin-left:100px">
+
+<h3 style="margin-left:200px;">Bạn có chắc là xóa sản phẩm này ?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhMinhHoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhMinhHoa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhMinhHoa1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhMinhHoa1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhMoTa1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhMoTa1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhMoTa2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhMoTa2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhMoTa3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhMoTa3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhMoTa4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhMoTa4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhMoTa5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhMoTa5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhMoTa6)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhMoTa6)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTaSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTaSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManHinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManHinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HDH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HDH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CameraSau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CameraSau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CameraTruoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CameraTruoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Chip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ram)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ram)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DungLuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DungLuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhanLoai.TenPhanLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhanLoai.TenPhanLoai)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div  class="form-actions no-color">
+            <input style="padding: 10px; margin-bottom: 15px; background-color: rgb(241 53 39); border: none; border-radius: 5px;" type="submit" value="Delete" class="" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+</div>

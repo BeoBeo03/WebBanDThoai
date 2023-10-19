@@ -24,7 +24,7 @@
                 </div>
             </a>
             <hr>
-            <a href="" class="item">
+            <a href="@Url.Action("Index","AdminProduct")" class="item">
                 <img class="icon" src="~/Image/icon_product.png" alt="">
                 <div class="text">
                     Sản phẩm
@@ -55,12 +55,13 @@
                     <table id="myTable" class="display">
                         <thead>
                             <tr>
+                                <th>STT</th>
                                 <th>Khách hàng</th>
                                 <th>SDT</th>
                                 <th>Giới tính</th>
                                 <th>Email</th>
                                 <th>Mật khẩu</th>
-                                <th>SDT</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -70,8 +71,8 @@
                             <tr>
                                 <td>@Html.DisplayFor(modelItem => item.IDUser)</td>
                                 <td>@Html.DisplayFor(modelItem => item.TenKH)</td>
-                                <td>@Html.DisplayFor(modelItem => item.GioiTinh)</td>
                                 <td>@Html.DisplayFor(modelItem => item.SDT)</td>
+                                <td>@Html.DisplayFor(modelItem => item.GioiTinh)</td>
                                 <td>@Html.DisplayFor(modelItem => item.Email)</td>
                                 <td>@Html.DisplayFor(modelItem => item.MatKhau)</td>
                             </tr>

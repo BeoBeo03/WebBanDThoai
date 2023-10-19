@@ -13,10 +13,10 @@ namespace WebApplication1.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CNPMNC_lt_1Entities : DbContext
+    public partial class CNPMNC_ltEntities : DbContext
     {
-        public CNPMNC_lt_1Entities()
-            : base("name=CNPMNC_lt_1Entities")
+        public CNPMNC_ltEntities()
+            : base("name=CNPMNC_ltEntities")
         {
         }
     
@@ -30,8 +30,6 @@ namespace WebApplication1.Models
         public virtual DbSet<KhachHang> KhachHang { get; set; }
         public virtual DbSet<PhanLoai> PhanLoai { get; set; }
         public virtual DbSet<SanPham> SanPham { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<ThongKe> ThongKe { get; set; }
-        public virtual DbSet<ThongSoKyThuat> ThongSoKyThuat { get; set; }
     }
 }

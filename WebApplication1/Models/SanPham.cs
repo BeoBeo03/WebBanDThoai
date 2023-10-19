@@ -28,6 +28,7 @@ namespace WebApplication1.Models
         public string TenSP { get; set; }
         public Nullable<double> GiaSP { get; set; }
         public string AnhMinhHoa { get; set; }
+        public string AnhMinhHoa1 { get; set; }
         public string AnhMoTa1 { get; set; }
         public string AnhMoTa2 { get; set; }
         public string AnhMoTa3 { get; set; }
@@ -35,13 +36,21 @@ namespace WebApplication1.Models
         public string AnhMoTa5 { get; set; }
         public string AnhMoTa6 { get; set; }
         public string MoTaSP { get; set; }
+        public string ManHinh { get; set; }
+        public string HDH { get; set; }
+        public string CameraSau { get; set; }
+        public string CameraTruoc { get; set; }
+        public string Chip { get; set; }
+        public string Ram { get; set; }
+        public string DungLuong { get; set; }
+        public string Sim { get; set; }
+        public string Pin { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTDonHang> CTDonHang { get; set; }
         public virtual PhanLoai PhanLoai { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThongKe> ThongKe { get; set; }
-        public virtual ThongSoKyThuat ThongSoKyThuat { get; set; }
         public EntityState State { get; internal set; }
     }
 }

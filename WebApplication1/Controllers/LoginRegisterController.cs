@@ -9,7 +9,7 @@ namespace WebApplication1.Controllers
 {
     public class LoginRegisterController : Controller
     {
-        CNPMNC_lt_1Entities db = new CNPMNC_lt_1Entities();
+        CNPMNC_ltEntities db = new CNPMNC_ltEntities();
         // GET: LoginRegister
         
         public ActionResult Register()
@@ -87,11 +87,15 @@ namespace WebApplication1.Controllers
                         else
                         {
                             ViewBag.ThongBao = "Tên đăng nhập hoặc mật khẩu không đúng";
+                            ModelState.AddModelError("", "Sai mật khẩu!");
+                            
                         }
+                        return RedirectToAction("Login", "LoginRegister");
                     }
                 }
             }
             return RedirectToAction("Index", "HomePage");
+
 
         }
         public ActionResult LogOut()

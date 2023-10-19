@@ -1,8 +1,9 @@
-﻿
+﻿@model IEnumerable<WebApplication1.Models.SanPham>
+
 @{
     ViewBag.Title = "Index";
 }
-
+@{ var formatMoney = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,8 +21,8 @@
     <link rel="stylesheet" href="/Style/base.css">
 </head>
 <body>
-    
-    
+
+
 
     <!-- end header -->
     <!-- navbar -->
@@ -133,92 +134,39 @@
                 </div>
                 <div class="container_slider_product">
                     <div class="owl-carousel">
+                        @foreach (var item in Model)
+                        {
 
-                        <div style="width: 1100px;" class="element">
-                            <a href="@Url.Action("Index","Product")">
-                                <div class="card">
-                                    <img class="card-img-top" src="~/Image/iphone3.jpg" alt="Card image cap">
-                                    <div class="overlay">
-                                        <img class="overlay_img" src="~/Image/iphone-11-3-1-do.jpg" alt="">
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-name">
-                                            <p class="card-text">iPhone 13 128GB | Chính hãng VN/A</p>
+                            <div style="width: 1100px;" class="element">
+                                <a href="@Url.Action("Index","Product")">
+                                    <div class="card">
+                                        <img class="card-img-top" src="~/Image/@item.AnhMinhHoa" alt="Card image cap">
+                                        <div class="overlay">
+                                            <img class="overlay_img" src="~/Image/@item.AnhMinhHoa1" alt="">
                                         </div>
-                                        <div class="card-badge">
-                                            <p class="card-badge-info-items">
-                                                6.7 inches
-                                            </p>
-                                            <p class="card-badge-info-items">
-                                                128GB
+                                        <div class="card-body">
+                                            <div class="product-name">
+                                                <p class="card-text">@item.TenSP | Chính hãng VN/A</p>
+                                            </div>
+                                            <div class="card-badge">
+                                                <p class="card-badge-info-items">
+                                                    Ram: @item.Ram
+                                                </p>
+                                                <p class="card-badge-info-items">
+                                                  @item.DungLuong
 
-                                            </p>
+                                                </p>
+                                            </div>
+                                            <h5> @String.Format(formatMoney, "{0:c0}", item.GiaSP)</h5>
+
+                                            <button style="margin-bottom: 25px;" class="love-product"><i class="fa-regular fa-heart"></i></button>
+
                                         </div>
-                                        <h5> 18.990.000₫</h5>
-
-                                        <button style="margin-bottom: 25px;" class="love-product"><i class="fa-regular fa-heart"></i></button>
-
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div style="width: 1100px;" class="element">
-                            <a href="@Url.Action("Index","Product")">
-                                <div class="card">
-                                    <img class="card-img-top" src="~/Image/iphone5.jpg" alt="Card image cap">
-                                    <div class="overlay">
-                                        <img class="overlay_img" src="Image/iphone-13-pro-max-xanh-6.jpg" alt="">
-                                    </div>
-                                    <div class="card-body">
-                                        <div style="" class="product-name">
-                                            <p class="card-text">iPhone 13 128GB | Chính hãng VN/A</p>
-                                        </div>
-                                        <div class="card-badge">
-                                            <p class="card-badge-info-items">
-                                                6.7 inches
-                                            </p>
-                                            <p class="card-badge-info-items">
-                                                128GB
+                                </a>
+                            </div>
+                        }
 
-                                            </p>
-                                        </div>
-                                        <h5> 18.990.000₫</h5>
-
-                                        <button onclick="window.location ='~/Views/Product/Index.cshtml'" style="margin-bottom: 25px;" class="love-product"><i class="fa-regular fa-heart"></i></button>
-
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div style="width: 1100px;" class="element">
-                            <a href="@Url.Action("Index","Product")">
-                                <div class="card">
-                                    <img class="card-img-top" src="~/Image/iphone.jpg" alt="Card image cap">
-                                    <div class="overlay">
-                                        <img class="overlay_img" src="~/Image/iphone-13-mini-hong-6.jpg" alt="">
-                                    </div>
-                                    <div class="card-body">
-                                        <div style="" class="product-name">
-                                            <p class="card-text">iPhone 13 128GB | Chính hãng VN/A</p>
-                                        </div>
-                                        <div class="card-badge">
-                                            <p class="card-badge-info-items">
-                                                6.7 inches
-                                            </p>
-                                            <p class="card-badge-info-items">
-                                                128GB
-
-                                            </p>
-                                        </div>
-                                        <h5> 18.990.000₫</h5>
-
-                                        <button style="margin-bottom: 25px;" class="love-product"><i class="fa-regular fa-heart"></i></button>
-
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        
 
 
                         <!-- end product1 -->
@@ -262,9 +210,9 @@
                                 </div>
                             </a>
                         </div>
-                        
-                        
-                        
+
+
+
 
 
                         <!-- end product1 -->
@@ -307,23 +255,23 @@
                             </div>
                         </a>
                     </div>
-                   @*end product*@
+                    @*end product*@
                 </div>
             </div>
 
 
         </div>
-        
-        </div>
+
+    </div>
 
 
 
 
-        <!-- Import js của Owl Carousel -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-        <script src="~/owl.carousel.min.js"></script>
+    <!-- Import js của Owl Carousel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="~/owl.carousel.min.js"></script>
 
-        <script src="~/JS/StyleSilder.js"></script>
+    <script src="~/JS/StyleSilder.js"></script>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="path/to/owl.carousel.min.js"></script>

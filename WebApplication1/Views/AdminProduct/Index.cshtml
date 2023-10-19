@@ -11,10 +11,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="~/Style/admin.css">
+
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
 
 </head>
 <body>
+   <style>
+       .content_header_icon img{
+           height:50px;
+           width:50px;
+           border:1px solid #808080;
+           border-radius:50%;
+           object-fit:cover;
+           background:#ddd;
+
+       }
+   </style>
     <div class="container">
         <div class="sidebar">
             <a href="@Url.Action("Index","Admin")" class="item">
@@ -25,7 +37,7 @@
                 </div>
             </a>
             <hr>
-            <a href="" class="item">
+            <a href="@Url.Action("Index","AdminProduct")" class="item">
                 <img class="icon" src="~/Image/icon_product.png" alt="">
                 <div class="text">
                     Sản phẩm
@@ -48,37 +60,99 @@
             </a>
         </div>
         <div class="nav">
+            
             <div class="content">
+                <div style="display:flex;justify-content:space-between;" class="content_header">
                 <h1>Quản lí sản phẩm</h1>
-
-                <button>
-                    <a class="Newitem-Button" href="@Url.Action("Create","QLSP")">Thêm Mới</a>
+                <div style="display:flex;" class="content_header_icon">
+                    <img style="margin-top:25px;" id="image" src="~/Image/icon_admin.png" alt="" />
+                    <div style="margin-left:7px;margin-top:27px">
+                        <div style="margin-right:20px;margin-bottom:5px">Admin</div>
+                        <input style="" type="file" id="file" name="file" accept=".jpg, .jpeg, .png, .gif" value="+" />
+                    </div>
+                </div>
+                </div>
+                <button style="padding: 10px; margin-bottom: 15px; background-color: rgb(241, 241, 128);border:none;border-radius:5px;">
+                    <a class="Newitem-Button" href="@Url.Action("Create","AdminProduct")">Thêm Mới</a>
                 </button>
+
                 <div class="content_table">
                     <table id="myTable" class="display">
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>TenSP</th>
+                                <th>Tên SP</th>
                                 <th>Giá Bán</th>
-                                <th>AnhMinhHoa</th>
-                                <th>Mật khẩu</th>
-                                <th>SDT</th>
+                                <th>Sản phẩm 1</th>
+                                <th>Sản phẩm 2</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <!-- code hiển thị data -->
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.IDUser)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.TenKH)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.GioiTinh)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.SDT)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.MatKhau)</td>
-                                </tr>
-                            }
+                           
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.IDSanpham)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.TenSP)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.GiaSP)</td>
+                                        <td> <img style="width:100px;height:100px;" src="~/Image/@item.AnhMinhHoa"></td>
+                                        <td> <img style="width:100px;height:100px;" src="~/Image/@item.AnhMoTa2" /></td>
+                                        @*<td>@Html.DisplayFor(modelItem => item.AnhMoTa1)</td>
+                                <td>@Html.DisplayFor(modelItem => item.AnhMoTa2)</td>*@
+                                        @*<td>@Html.DisplayFor(modelItem => item.AnhMoTa3)</td>
+                                <td>@Html.DisplayFor(modelItem => item.AnhMoTa4)</td>
+                                <td>@Html.DisplayFor(modelItem => item.AnhMoTa5)</td>
+                                <td>@Html.DisplayFor(modelItem => item.AnhMoTa6)</td>
+
+                                <td>@Html.DisplayFor(modelItem => item.MoTaSP)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ManHinh)</td>
+                                <td>@Html.DisplayFor(modelItem => item.HDH)</td>
+                                <td>@Html.DisplayFor(modelItem => item.CameraSau)</td>
+                                <td>@Html.DisplayFor(modelItem => item.CameraTruoc)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Chip)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Ram)</td>
+                                <td>@Html.DisplayFor(modelItem => item.DungLuong)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Sim)</td>
+                                <td>@Html.DisplayFor(modelItem => item.PhanLoai)</td>*@
+                                        <td class="modifi-space">
+                                            <div class="flex-modifibtn">
+                                                <button style="padding: 10px; margin-bottom: 15px; background-color: rgb(67 220 73); border: none; border-radius: 5px;">
+                                                    <div class="morebtn">
+                                                        @Html.ActionLink("Edit", "Edit", "AdminProduct", new { id = item.IDSanpham }, null)
+
+
+                                                    </div>
+                                                </button>
+
+                                            </div>
+                                        </td>
+                                        <td class="modifi-space">
+                                            <div class="flex-modifibtn">
+                                                <button  style="padding: 10px; margin-bottom: 15px; background-color: rgb(241 53 39); border: none; border-radius: 5px;">
+                                                    <div class="deletebtn">
+                                                        @Html.ActionLink("Delete", "Delete", "AdminProduct", new { id = item.IDSanpham }, null)
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="flex-modifibtn">
+                                                <button style="padding: 10px; margin-bottom: 15px; background-color: #FF9800; border: none; border-radius: 5px;">
+                                                    <div class="details">
+                                                        @Html.ActionLink("Details", "Details", "AdminProduct", new { id = item.IDSanpham }, null)
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                }
+
+                            
 
                         </tbody>
                     </table>
@@ -107,6 +181,16 @@
 
     $(document).ready(function () {
         $('#myTable').DataTable();
+    });
+
+    //
+    const image = document.getElementById("image");
+    const input = document.getElementById("file");
+
+    input.addEventListener("change", () => {
+        if (input.files.length > 0) {
+            image.src = URL.createObjectURL(input.files[0]);
+        }
     });
 </script>
 
