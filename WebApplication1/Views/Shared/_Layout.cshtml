@@ -63,7 +63,7 @@
                 </div>
                 <a style="text-decoration: none;list-style: none;color: #000;" class="category">
                     <div class="category_icon">
-                        <i class="fa-solid fa-bars"></i>
+                        <i style="margin-right:10px;" class="fa-solid fa-bars"></i>
                         <span>Danh mục</span>
                     </div>
 
@@ -73,23 +73,12 @@
 
                 <div class="search-input">
                     <form class="form">
-                        <input class="form_search " type="search" placeholder="Tìm kiếm" aria-label="Search">
+                        <input type="text" id="searchBox" class="form_search " type="search" placeholder="Tìm kiếm" aria-label="Search">
                         <button class="search_icon" type="submit"><i class="fas fa-search"></i></button>
                     </form>
                 </div>
 
-                <div class="head_items">
-                    <div class="hotline_icon">
-                        <i class="fa-solid fa-mobile"></i>
-                    </div>
-                    <div class="item hotline_item">
-                        <p style="margin-left: 4px;">
-                            Gọi mua hàng
-                            <br>
-                            <strong>0902718029</strong>
-                        </p>
-                    </div>
-                </div>
+
                 <div class="favorite">
                     <a href="">
 
@@ -117,21 +106,21 @@
                 </div>
                 @if (kh != null)
                 {
-            <div class="login">
-                <div class="login_btn">
-                    <a style="text-decoration: none;" href="@Url.Action("Index","AdminPage")" class="login_btn">
-                        <i class="fa-solid fa-user login_icon"></i>
-                        <p>@kh.TenKH</p>
+                    <div class="login">
+                        <div class="login_btn">
+                            <a style="text-decoration: none;" href="@Url.Action("Index","AdminPage")" class="login_btn">
+                                <i class="fa-solid fa-user login_icon"></i>
+                                <p>@kh.TenKH</p>
 
-                    </a>
-                    <div class="sub-menu">
-                        <a style="float:left;margin-right:20px;color:black;" href="@Url.Action("LogOut", "LoginRegister")"><i style="margin-right:15px" class="fa-solid fa-right-to-bracket"></i>Đăng xuất</a>
-                        <a style="float: left; margin-right: 20px; color: black;" href="@Url.Action("Index", "AdminPage")"><i style="margin-right:15px" class="fa-solid fa-user"></i>Cá nhân</a>
+                            </a>
+                            <div class="sub-menu">
+                                <a style="float:left;margin-right:20px;color:black;" href="@Url.Action("LogOut", "LoginRegister")"><i style="margin-right:15px" class="fa-solid fa-right-to-bracket"></i>Đăng xuất</a>
+                                <a style="float: left; margin-right: 20px; color: black;" href="@Url.Action("Index", "AdminPage")"><i style="margin-right:15px" class="fa-solid fa-user"></i>Cá nhân</a>
+
+                            </div>
+                        </div>
 
                     </div>
-                </div>
-                
-            </div>
                 }
                 else
                 {
@@ -154,7 +143,7 @@
 
     <footer>
         <div style="position: relative;" class="footer">
-            <div class="footer_container">
+            <div style="; margin-top: 200px;" class="footer_container">
                 <div class="footer_items">
                     <h6>Địa chỉ chúng tôi</h6>
                     <ul>
@@ -178,22 +167,22 @@
                     <div class="connect_content">
                         <div class="connect_content_items">
                             <a href="">
-                                <img class="connect_content_items_img" src="Image/facebook.png" alt="">
+                                <img class="connect_content_items_img" src="~/Image/facebook.png" alt="">
                             </a>
                         </div>
                         <div class="connect_content_items">
                             <a href="">
-                                <img class="connect_content_items_img" src="Image/cn_ytb.png" alt="">
+                                <img class="connect_content_items_img" src="~/Image/cn_ytb.png" alt="">
                             </a>
                         </div>
                         <div class="connect_content_items">
                             <a href="">
-                                <img class="connect_content_items_img" src="Image/twitter.png" alt="">
+                                <img class="connect_content_items_img" src="~/Image/twitter.png" alt="">
                             </a>
                         </div>
                         <div class="connect_content_items">
                             <a href="">
-                                <img class="connect_content_items_img" src="Image/instagram.png" alt="">
+                                <img class="connect_content_items_img" src="~/Image/instagram.png" alt="">
                             </a>
                         </div>
                     </div>
@@ -208,5 +197,34 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>
+
+
+        @*let searchBox = document.getElementById("searchBox");
+        function runScript(e) {
+            //See notes about 'which' and 'key'
+            if (e.keyCode == 13) {
+                var keyword = searchBox.value;
+
+
+                if (keyword.trim() != "") {
+                    window.location = ` /HomePage/Index?SearchString=${keyword}`
+                }
+            }
+        }*@
+        
+
+    </script>
 </body>
 </html>
+<script>
+    
+    document.getElementById("searchBox").addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+            let keyword = this.value;
+            if (keyword.trim() != "") {
+                window.location = '/HomePage/Index?SearchString=' + keyword;
+            }
+        }
+    });
+</script>

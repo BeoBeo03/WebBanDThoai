@@ -94,7 +94,7 @@ input
 
 .search_icon {
     position: absolute;
-    right: 48%;
+    right: 39%;
     top: 38px;
     background: none;
     border: none;
@@ -105,7 +105,7 @@ input
 }
 
 .search-input .form_search {
-    width: 300px;
+    width: 410px;
     height: 40px;
     border-radius: 20px;
     border-color: bisque;

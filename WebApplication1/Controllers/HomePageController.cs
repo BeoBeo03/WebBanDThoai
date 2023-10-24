@@ -11,14 +11,23 @@ namespace WebApplication1.Controllers
     {
         // GET: HomePage
         CNPMNC_ltEntities db = new CNPMNC_ltEntities();
-        public ActionResult Index()
+        public ActionResult Index(string SearchString)
         {
-            if (Session["TaiKhoanAdmin"] != null)
-            {
+            
                 var products = db.SanPham.ToList();
-                return View(products);
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                products = products.Where(p => p.TenSP.Contains(SearchString)).ToList();
             }
-            return RedirectToAction("Login", "LoginRegister");
+            return View(products);
+
         }
+        public ActionResult GioiThieu()
+        {
+            return View();
+        }
+
+       
+
     }
 }

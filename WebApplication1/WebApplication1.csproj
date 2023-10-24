@@ -181,6 +181,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\aboutus_1.jpg" />
+    <Content Include="Image\aboutus_10.jpg" />
+    <Content Include="Image\aboutus_12.jpg" />
+    <Content Include="Image\aboutus_15.jpg" />
+    <Content Include="Image\aboutus_2.jpg" />
+    <Content Include="Image\aboutus_7.jpg" />
+    <Content Include="Image\aboutus_8.jpg" />
+    <Content Include="Image\aboutus_9.png" />
     <Content Include="Image\banner-1.jpg" />
     <Content Include="Image\banner1.jpg" />
     <Content Include="Image\banner2.png" />
@@ -227,6 +235,7 @@
     <Content Include="Image\silder2.jpg" />
     <Content Include="Image\silder3.jpg" />
     <Content Include="Image\twitter.png" />
+    <Content Include="Image\Untitled.jpg" />
     <Content Include="JS\StyleSilder.js" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -266,6 +275,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Style\admin.css" />
+    <Content Include="Style\Cart.css" />
+    <Content Include="Style\GioiThieu.css" />
     <Content Include="Style\login-register.css" />
     <Content Include="Style\slide.css" />
     <Content Include="Style\style.css" />
@@ -284,13 +295,14 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\LoginRegister\Login.cshtml" />
     <Content Include="Views\LoginRegister\Register.cshtml" />
-    <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\AdminProduct\Index.cshtml" />
     <Content Include="Views\AdminProduct\Create.cshtml" />
     <Content Include="Views\AdminProduct\Edit.cshtml" />
     <Content Include="Views\AdminProduct\Delete.cshtml" />
     <Content Include="Views\AdminProduct\Details.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\HomePage\GioiThieu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -55,7 +55,7 @@
                         <a class="nav-link" href="news-category.html"><i class="ri-newspaper-line"></i>Tin tức</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="ri-profile-line"></i>Giới thiệu</a>
+                        <a class="nav-link" href="@Url.Action("GioiThieu","HomePage")"><i class="ri-profile-line"></i>Giới thiệu</a>
                     </li>
 
                 </div>
@@ -137,12 +137,12 @@
                         @foreach (var item in Model)
                         {
 
-                            <div style="width: 1100px;" class="element">
-                                <a href="@Url.Action("Index","Product")">
-                                    <div class="card">
-                                        <img class="card-img-top" src="~/Image/@item.AnhMinhHoa" alt="Card image cap">
+                            <div style="width: 1100px;height:390px;" class="element">
+                                <a href="@Url.Action("Index","Product",new { id = item.IDSanpham })">
+                                    <div style="height:100%;" class="card">
+                                        <img style="height:231px;" class="card-img-top" src="~/Image/@item.AnhMinhHoa" alt="Card image cap">
                                         <div class="overlay">
-                                            <img class="overlay_img" src="~/Image/@item.AnhMinhHoa1" alt="">
+                                            <img class="overlay_img" src="~/Image/@item.AnhMoTa2" alt="">
                                         </div>
                                         <div class="card-body">
                                             <div class="product-name">
@@ -173,45 +173,7 @@
                     </div>
                 </div>
             </div>
-            <div style="background: linear-gradient(rgb(0, 0, 0), rgb(220 200 34)) 0% 0% / cover;;" class="product_list category_product">
-                <div class="product_list_head">
-                    <a style="text-decoration: none;list-style: none;" href="">
-                        <h3>SAMSUNG</h3>
-                    </a>
-                </div>
-                <div class="container_slider_product">
-                    <div class="owl-carousel">
-
-                        <div style="width: 1100px;" class="element">
-                            <a href="@Url.Action("Index","Product")">
-                                <div class="card">
-                                    <img class="card-img-top" src="~/Image/iphone3.jpg" alt="Card image cap">
-                                    <div class="overlay">
-                                        <img class="overlay_img" src="~/Image/iphone-11-3-1-do.jpg" alt="">
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-name">
-                                            <p class="card-text">iPhone 13 128GB | Chính hãng VN/A</p>
-                                        </div>
-                                        <div class="card-badge">
-                                            <p class="card-badge-info-items">
-                                                6.7 inches
-                                            </p>
-                                            <p class="card-badge-info-items">
-                                                128GB
-
-                                            </p>
-                                        </div>
-                                        <h5> 18.990.000₫</h5>
-
-                                        <button style="margin-bottom: 25px;" class="love-product"><i class="fa-regular fa-heart"></i></button>
-
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-
+            
 
 
 
@@ -227,34 +189,40 @@
                 <div style="display: flex;flex-wrap: wrap;" class="container_slider_product">
 
 
-                    <div style="margin-top: 10px;" class="element">
-                        <a href="@Url.Action("Index","Product")">
-                            <div style="padding-left: 20px;" class="card">
-                                <img style="width: 208px;" class="card-img-top" src="~/Image/iphone3.jpg" alt="Card image cap">
-                                <div class="overlay">
-                                    <img style="height: 205px;border-radius: 15px 15px 0 0;width: 235px;" class="overlay_img" src="Image/iphone-11-3-1-do.jpg" alt="">
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-name">
-                                        <p class="card-text">iPhone 13 128GB | Chính hãng VN/A</p>
+                    @foreach (var item in Model)
+            {
+                        <div style="margin-top: 10px;height:390px;" class="element">
+                            <a href="@Url.Action("Index","Product",new { id = item.IDSanpham })">
+                                <div style="padding-left: 20px;" class="card">
+                                    <img style="width: 195px;height:231px;" class="card-img-top" src="~/Image/@item.AnhMinhHoa" alt="Card image cap">
+                                    <div style="margin-bottom:4px;" class="overlay">
+                                        <img style="height: 235px;border-radius: 15px 15px 0 0;width: 235px;" class="overlay_img" src="~/Image/@item.AnhMoTa2" alt="">
                                     </div>
-                                    <div class="card-badge">
-                                        <p class="card-badge-info-items">
-                                            6.7 inches
-                                        </p>
-                                        <p class="card-badge-info-items">
-                                            128GB
+                                    <div class="card-body">
+                                        <div class="product-name">
+                                            <p class="card-text">@item.TenSP @item.DungLuong | Chính hãng VN/A</p>
+                                        </div>
+                                        <div class="card-badge">
+                                            <p class="card-badge-info-items">
+                                                Ram: @item.Ram
+                                            </p>
+                                            <p class="card-badge-info-items">
+                                                @item.DungLuong
 
-                                        </p>
+                                            </p>
+                                        </div>
+                                        <h5>  @String.Format(formatMoney, "{0:c0}", item.GiaSP)</h5>
+
+                                        <button style="margin-bottom: 25px;" class="love-product"><i class="fa-regular fa-heart"></i></button>
+
                                     </div>
-                                    <h5> 18.990.000₫</h5>
-
-                                    <button style="margin-bottom: 25px;" class="love-product"><i class="fa-regular fa-heart"></i></button>
-
                                 </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    
+
+            }
+
                     @*end product*@
                 </div>
             </div>
