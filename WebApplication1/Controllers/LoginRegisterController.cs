@@ -48,6 +48,7 @@ namespace WebApplication1.Controllers
                 }
                 else
                 {
+                    ViewBag.ErrorMessage = "Đã có người đăng ký";
                     return View();
                 }
             }
@@ -55,6 +56,7 @@ namespace WebApplication1.Controllers
         }
         public ActionResult Login()
         {
+            ViewBag.ErrorMessage = "Tên đăng nhập hoặc mật khẩu không đúng";
             return View();
         }
         [HttpPost]
@@ -100,7 +102,7 @@ namespace WebApplication1.Controllers
         }
         public ActionResult LogOut()
         {
-            Session["Taikhoan"] = null;
+            Session["TaiKhoan"] = null;
             return Redirect("/");
         }
     }

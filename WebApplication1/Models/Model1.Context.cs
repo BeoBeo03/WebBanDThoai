@@ -31,5 +31,6 @@ namespace WebApplication1.Models
         public virtual DbSet<PhanLoai> PhanLoai { get; set; }
         public virtual DbSet<SanPham> SanPham { get; set; }
         public virtual DbSet<ThongKe> ThongKe { get; set; }
+        public virtual DbSet<YeuThich> YeuThich { get; set; }
     }
 }

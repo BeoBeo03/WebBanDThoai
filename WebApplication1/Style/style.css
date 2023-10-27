@@ -351,7 +351,7 @@ input
 
 /* CSS cho nút love */
 .card:hover .love-product, .card-body h5 {
-    transform: translateY(-20px);
+    transform: translateY(-40px);
 }
 
 .card:hover::after {
@@ -363,7 +363,7 @@ input
 /* CSS cho giá */
 
 .card:hover h5 {
-    transform: translateY(-40px);
+    transform: translateY(-35px);
 }
 
 

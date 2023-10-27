@@ -65,7 +65,7 @@
           <Property Name="AnhMoTa4" Type="nvarchar" MaxLength="100" />
           <Property Name="AnhMoTa5" Type="nvarchar" MaxLength="100" />
           <Property Name="AnhMoTa6" Type="nvarchar" MaxLength="100" />
-          <Property Name="MoTaSP" Type="nvarchar" MaxLength="100" />
+          <Property Name="MoTaSP" Type="nvarchar" MaxLength="1000" />
           <Property Name="ManHinh" Type="nvarchar" MaxLength="100" />
           <Property Name="HDH" Type="nvarchar" MaxLength="100" />
           <Property Name="CameraSau" Type="nvarchar" MaxLength="100" />
@@ -85,6 +85,15 @@
           <Property Name="IDDonHang" Type="int" />
           <Property Name="DoanhSo" Type="float" />
           <Property Name="NgayThongKe" Type="datetime" />
+        </EntityType>
+        <EntityType Name="YeuThich">
+          <Key>
+            <PropertyRef Name="IDYeuThich" />
+          </Key>
+          <Property Name="IDYeuThich" Type="int" Nullable="false" />
+          <Property Name="IDSanPham" Type="int" />
+          <Property Name="IDUser" Type="int" />
+          <Property Name="NgayThem" Type="datetime" />
         </EntityType>
         <Association Name="fk_ctdonhang_donhang">
           <End Role="DonHang" Type="Self.DonHang" Multiplicity="0..1" />
@@ -146,6 +155,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_yeuthich_sanpham">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1" />
+          <End Role="YeuThich" Type="Self.YeuThich" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="IDSanpham" />
+            </Principal>
+            <Dependent Role="YeuThich">
+              <PropertyRef Name="IDSanPham" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_yeuthich_user">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+          <End Role="YeuThich" Type="Self.YeuThich" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="YeuThich">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="pk_phanloai_sanpham">
           <End Role="PhanLoai" Type="Self.PhanLoai" Multiplicity="0..1" />
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
@@ -165,6 +198,7 @@
           <EntitySet Name="PhanLoai" EntityType="Self.PhanLoai" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThongKe" EntityType="Self.ThongKe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YeuThich" EntityType="Self.YeuThich" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="fk_ctdonhang_donhang" Association="Self.fk_ctdonhang_donhang">
             <End Role="DonHang" EntitySet="DonHang" />
             <End Role="CTDonHang" EntitySet="CTDonHang" />
@@ -184,6 +218,14 @@
           <AssociationSet Name="fk_thongke_sanpham" Association="Self.fk_thongke_sanpham">
             <End Role="SanPham" EntitySet="SanPham" />
             <End Role="ThongKe" EntitySet="ThongKe" />
+          </AssociationSet>
+          <AssociationSet Name="fk_yeuthich_sanpham" Association="Self.fk_yeuthich_sanpham">
+            <End Role="SanPham" EntitySet="SanPham" />
+            <End Role="YeuThich" EntitySet="YeuThich" />
+          </AssociationSet>
+          <AssociationSet Name="fk_yeuthich_user" Association="Self.fk_yeuthich_user">
+            <End Role="KhachHang" EntitySet="KhachHang" />
+            <End Role="YeuThich" EntitySet="YeuThich" />
           </AssociationSet>
           <AssociationSet Name="pk_phanloai_sanpham" Association="Self.pk_phanloai_sanpham">
             <End Role="PhanLoai" EntitySet="PhanLoai" />
@@ -236,6 +278,7 @@
           <Property Name="MatKhau" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SDT" Type="Int32" />
           <NavigationProperty Name="DonHang" Relationship="Self.fk_donhang_khachhang" FromRole="KhachHang" ToRole="DonHang" />
+          <NavigationProperty Name="YeuThich" Relationship="Self.fk_yeuthich_user" FromRole="KhachHang" ToRole="YeuThich" />
         </EntityType>
         <EntityType Name="PhanLoai">
           <Key>
@@ -262,7 +305,7 @@
           <Property Name="AnhMoTa4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="AnhMoTa5" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="AnhMoTa6" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MoTaSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MoTaSP" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="ManHinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="HDH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CameraSau" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -275,6 +318,7 @@
           <NavigationProperty Name="CTDonHang" Relationship="Self.fk_ctdonhang_sanpham" FromRole="SanPham" ToRole="CTDonHang" />
           <NavigationProperty Name="PhanLoai" Relationship="Self.pk_phanloai_sanpham" FromRole="SanPham" ToRole="PhanLoai" />
           <NavigationProperty Name="ThongKe" Relationship="Self.fk_thongke_sanpham" FromRole="SanPham" ToRole="ThongKe" />
+          <NavigationProperty Name="YeuThich" Relationship="Self.fk_yeuthich_sanpham" FromRole="SanPham" ToRole="YeuThich" />
         </EntityType>
         <EntityType Name="ThongKe">
           <Key>
@@ -287,6 +331,17 @@
           <Property Name="NgayThongKe" Type="DateTime" Precision="3" />
           <NavigationProperty Name="DonHang" Relationship="Self.fk_thongke_donhang" FromRole="ThongKe" ToRole="DonHang" />
           <NavigationProperty Name="SanPham" Relationship="Self.fk_thongke_sanpham" FromRole="ThongKe" ToRole="SanPham" />
+        </EntityType>
+        <EntityType Name="YeuThich">
+          <Key>
+            <PropertyRef Name="IDYeuThich" />
+          </Key>
+          <Property Name="IDYeuThich" Type="Int32" Nullable="false" />
+          <Property Name="IDSanPham" Type="Int32" />
+          <Property Name="IDUser" Type="Int32" />
+          <Property Name="NgayThem" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="KhachHang" Relationship="Self.fk_yeuthich_user" FromRole="YeuThich" ToRole="KhachHang" />
+          <NavigationProperty Name="SanPham" Relationship="Self.fk_yeuthich_sanpham" FromRole="YeuThich" ToRole="SanPham" />
         </EntityType>
         <Association Name="fk_ctdonhang_donhang">
           <End Role="DonHang" Type="Self.DonHang" Multiplicity="0..1" />
@@ -336,6 +391,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_yeuthich_user">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+          <End Role="YeuThich" Type="Self.YeuThich" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="YeuThich">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="pk_phanloai_sanpham">
           <End Role="PhanLoai" Type="Self.PhanLoai" Multiplicity="0..1" />
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
@@ -360,6 +427,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_yeuthich_sanpham">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1" />
+          <End Role="YeuThich" Type="Self.YeuThich" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="IDSanpham" />
+            </Principal>
+            <Dependent Role="YeuThich">
+              <PropertyRef Name="IDSanPham" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="CNPMNC_ltEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CTDonHang" EntityType="Self.CTDonHang" />
           <EntitySet Name="DonHang" EntityType="Self.DonHang" />
@@ -367,6 +446,7 @@
           <EntitySet Name="PhanLoai" EntityType="Self.PhanLoai" />
           <EntitySet Name="SanPham" EntityType="Self.SanPham" />
           <EntitySet Name="ThongKe" EntityType="Self.ThongKe" />
+          <EntitySet Name="YeuThich" EntityType="Self.YeuThich" />
           <AssociationSet Name="fk_ctdonhang_donhang" Association="Self.fk_ctdonhang_donhang">
             <End Role="DonHang" EntitySet="DonHang" />
             <End Role="CTDonHang" EntitySet="CTDonHang" />
@@ -383,6 +463,10 @@
             <End Role="DonHang" EntitySet="DonHang" />
             <End Role="ThongKe" EntitySet="ThongKe" />
           </AssociationSet>
+          <AssociationSet Name="fk_yeuthich_user" Association="Self.fk_yeuthich_user">
+            <End Role="KhachHang" EntitySet="KhachHang" />
+            <End Role="YeuThich" EntitySet="YeuThich" />
+          </AssociationSet>
           <AssociationSet Name="pk_phanloai_sanpham" Association="Self.pk_phanloai_sanpham">
             <End Role="PhanLoai" EntitySet="PhanLoai" />
             <End Role="SanPham" EntitySet="SanPham" />
@@ -390,6 +474,10 @@
           <AssociationSet Name="fk_thongke_sanpham" Association="Self.fk_thongke_sanpham">
             <End Role="SanPham" EntitySet="SanPham" />
             <End Role="ThongKe" EntitySet="ThongKe" />
+          </AssociationSet>
+          <AssociationSet Name="fk_yeuthich_sanpham" Association="Self.fk_yeuthich_sanpham">
+            <End Role="SanPham" EntitySet="SanPham" />
+            <End Role="YeuThich" EntitySet="YeuThich" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -482,6 +570,16 @@
                 <ScalarProperty Name="IDDonHang" ColumnName="IDDonHang" />
                 <ScalarProperty Name="DoanhSo" ColumnName="DoanhSo" />
                 <ScalarProperty Name="NgayThongKe" ColumnName="NgayThongKe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YeuThich">
+            <EntityTypeMapping TypeName="CNPMNC_ltModel.YeuThich">
+              <MappingFragment StoreEntitySet="YeuThich">
+                <ScalarProperty Name="IDYeuThich" ColumnName="IDYeuThich" />
+                <ScalarProperty Name="IDSanPham" ColumnName="IDSanPham" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="NgayThem" ColumnName="NgayThem" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

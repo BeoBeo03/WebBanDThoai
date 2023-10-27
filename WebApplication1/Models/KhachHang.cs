@@ -18,6 +18,7 @@ namespace WebApplication1.Models
         public KhachHang()
         {
             this.DonHang = new HashSet<DonHang>();
+            this.YeuThich = new HashSet<YeuThich>();
         }
     
         public int IDUser { get; set; }
@@ -29,5 +30,7 @@ namespace WebApplication1.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHang { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<YeuThich> YeuThich { get; set; }
     }
 }

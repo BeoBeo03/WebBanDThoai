@@ -1,6 +1,7 @@
-﻿
+﻿@using WebApplication1.Models;
 @{
     Layout = null;
+    
 }
 
 
@@ -27,6 +28,7 @@
             background-size: 100% 100%;
             overflow: hidden;
         }
+
         .container {
             background-image: url("/Images/bg_login.png");
             background-position: center;
@@ -100,31 +102,32 @@
             }
 
         .add_to_cart_btn {
-            margin-top:20px;
+            margin-top: 20px;
             padding: 10px;
             width: 360px;
             border-radius: 30px;
             border: 2px solid rgb(247, 247, 11);
             background-color: rgb(241, 241, 128);
         }
-.add_to_cart_btn:hover {
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
 
-
-.add_to_cart_btn:hover {
-  animation: shake 0.3s ease-in-out;
-}
-.add_to_cart_btn:hover {
-    color: #000;
-}
-.add_to_cart_btn:hover {
-    transform: scale(1);
-    background-color: #fff;
-  }
+            .add_to_cart_btn:hover {
+                box-shadow: 0 0 10px rgba(0,0,0,0.2);
             }
 
 
+            .add_to_cart_btn:hover {
+                animation: shake 0.3s ease-in-out;
+            }
+
+            .add_to_cart_btn:hover {
+                color: #000;
+            }
+
+            .add_to_cart_btn:hover {
+                transform: scale(1);
+                background-color: #fff;
+            }
+        }
     </style>
     <div class="container">
         @*<img class="img_bg" src="~/Images/bg_login.png" alt="">*@

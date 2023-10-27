@@ -57,7 +57,7 @@
 
             <div class="row">
                 <div class="logo">
-                    <a href="main.html">
+                    <a href="@Url.Action("Index","HomePage")">
                         <img class="logo_image" src="~/Image/DreamShaper_v7_minion_1.jpg" alt="">
                     </a>
                 </div>
@@ -80,7 +80,7 @@
 
 
                 <div class="favorite">
-                    <a href="">
+                    <a href="@Url.Action("Index","Favorite")">
 
                         <div class="favorite_icon">
                             <i style="font-size: 2.4rem;" class="fa-solid fa-heart"></i>
@@ -142,7 +142,7 @@
     @RenderBody()
 
     <footer>
-        <div style="position: relative;" class="footer">
+        <div style="position: relative;margin:0;padding:0;" class="footer">
             <div style="; margin-top: 200px;" class="footer_container">
                 <div class="footer_items">
                     <h6>Địa chỉ chúng tôi</h6>

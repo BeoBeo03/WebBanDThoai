@@ -4,19 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="801a135ff8fc47a8901f38cbad06c8dd" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="CNPMNC_ltModel.CTDonHang" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CNPMNC_ltModel.DonHang" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CNPMNC_ltModel.KhachHang" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="CNPMNC_ltModel.PhanLoai" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CNPMNC_ltModel.SanPham" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CNPMNC_ltModel.ThongKe" Width="1.5" PointX="8.25" PointY="3" IsExpanded="true" />
+      <Diagram DiagramId="2b940dc75766488097932cadb42dc63a" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="CNPMNC_ltModel.CTDonHang" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMNC_ltModel.DonHang" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMNC_ltModel.KhachHang" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMNC_ltModel.PhanLoai" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMNC_ltModel.SanPham" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMNC_ltModel.ThongKe" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMNC_ltModel.YeuThich" Width="1.5" PointX="8.25" PointY="2" IsExpanded="true" />
         <AssociationConnector Association="CNPMNC_ltModel.fk_ctdonhang_donhang" ManuallyRouted="false" />
         <AssociationConnector Association="CNPMNC_ltModel.fk_ctdonhang_sanpham" ManuallyRouted="false" />
         <AssociationConnector Association="CNPMNC_ltModel.fk_donhang_khachhang" ManuallyRouted="false" />
         <AssociationConnector Association="CNPMNC_ltModel.fk_thongke_donhang" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPMNC_ltModel.fk_yeuthich_user" ManuallyRouted="false" />
         <AssociationConnector Association="CNPMNC_ltModel.pk_phanloai_sanpham" ManuallyRouted="false" />
         <AssociationConnector Association="CNPMNC_ltModel.fk_thongke_sanpham" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPMNC_ltModel.fk_yeuthich_sanpham" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

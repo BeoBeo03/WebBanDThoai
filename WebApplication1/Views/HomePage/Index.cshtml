@@ -136,39 +136,41 @@
                     <div class="owl-carousel">
                         @foreach (var item in Model)
                         {
-
-                            <div style="width: 1100px;height:390px;" class="element">
-                                <a href="@Url.Action("Index","Product",new { id = item.IDSanpham })">
-                                    <div style="height:100%;" class="card">
-                                        <img style="height:231px;" class="card-img-top" src="~/Image/@item.AnhMinhHoa" alt="Card image cap">
-                                        <div class="overlay">
-                                            <img class="overlay_img" src="~/Image/@item.AnhMoTa2" alt="">
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="product-name">
-                                                <p class="card-text">@item.TenSP | Chính hãng VN/A</p>
-                                            </div>
-                                            <div class="card-badge">
-                                                <p class="card-badge-info-items">
-                                                    Ram: @item.Ram
-                                                </p>
-                                                <p class="card-badge-info-items">
-                                                  @item.DungLuong
-
-                                                </p>
-                                            </div>
-                                            <h5> @String.Format(formatMoney, "{0:c0}", item.GiaSP)</h5>
-
-                                            <button style="margin-bottom: 25px;" class="love-product"><i class="fa-regular fa-heart"></i></button>
-
-                                        </div>
+                           
+                            
+                        <div style="width: 1100px;height:390px;" class="element">
+                            <a href="@Url.Action("Index","Product",new { id = item.IDSanpham })">
+                                <div style="height:100%;" class="card">
+                                    <img style="height:231px;" class="card-img-top" src="~/Image/@item.AnhMinhHoa" alt="Card image cap">
+                                    <div class="overlay">
+                                        <img class="overlay_img" src="~/Image/@item.AnhMoTa2" alt="">
                                     </div>
-                                </a>
-                            </div>
+                                    <div class="card-body">
+                                        <div class="product-name">
+                                            <p class="card-text">@item.TenSP | Chính hãng VN/A</p>
+                                        </div>
+                                        <div class="card-badge">
+                                            <p class="card-badge-info-items">
+                                                Ram: @item.Ram
+                                            </p>
+                                            <p class="card-badge-info-items">
+                                                @item.DungLuong
+
+                                            </p>
+                                        </div>
+                                        <h5> @String.Format(formatMoney, "{0:c0}", item.GiaSP)</h5>
+
+
+                                        <a href="@Url.Action("ThemMucYeuThich", "Favorite", new { IDSanPham = item.IDSanpham })" class="love-product">
+                                            <i class="fa-regular fa-heart"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </a>
+                            
+                        </div>
                         }
-
-
-
                         <!-- end product1 -->
                     </div>
                 </div>
@@ -182,66 +184,58 @@
                 </div>
 
             </div>
-            <div style="margin-left: 170px; " class="container_list_items">
-                <div style="margin: 20px 0;" class="product_all">
-                    <div style="font-size: 30px;text-align: center;" class="">TẤT CẢ SẢN PHẨM</div>
-                </div>
-                <div style="display: flex;flex-wrap: wrap;" class="container_slider_product">
-
-
-                    @foreach (var item in Model)
-            {
-                        <div style="margin-top: 10px;height:390px;" class="element">
-                            <a href="@Url.Action("Index","Product",new { id = item.IDSanpham })">
-                                <div style="padding-left: 20px;" class="card">
-                                    <img style="width: 195px;height:231px;" class="card-img-top" src="~/Image/@item.AnhMinhHoa" alt="Card image cap">
-                                    <div style="margin-bottom:4px;" class="overlay">
-                                        <img style="height: 235px;border-radius: 15px 15px 0 0;width: 235px;" class="overlay_img" src="~/Image/@item.AnhMoTa2" alt="">
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-name">
-                                            <p class="card-text">@item.TenSP @item.DungLuong | Chính hãng VN/A</p>
+            <div   class="container_list_items">
+                <div style="margin-left: 170px;" >
+                    <div style="margin: 20px 0;" class="product_all">
+                        <div style="font-size: 30px;text-align: center;" class="">TẤT CẢ SẢN PHẨM</div>
+                    </div>
+                    <div style="display: flex;flex-wrap: wrap;" class="container_slider_product">
+                        @foreach (var item in Model)
+                        {
+                            <div style="margin-top: 10px;height:390px;" class="element">
+                                <a href="@Url.Action("Index","Product",new { id = item.IDSanpham })">
+                                    <div style="padding-left: 20px;" class="card">
+                                        <img style="width: 195px;height:231px;" class="card-img-top" src="~/Image/@item.AnhMinhHoa" alt="Card image cap">
+                                        <div style="margin-bottom:4px;" class="overlay">
+                                            <img style="height: 235px;border-radius: 15px 15px 0 0;width: 235px;" class="overlay_img" src="~/Image/@item.AnhMoTa2" alt="">
                                         </div>
-                                        <div class="card-badge">
-                                            <p class="card-badge-info-items">
-                                                Ram: @item.Ram
-                                            </p>
-                                            <p class="card-badge-info-items">
-                                                @item.DungLuong
-
-                                            </p>
+                                        <div class="card-body">
+                                            <div class="product-name">
+                                                <p class="card-text">@item.TenSP @item.DungLuong | Chính hãng VN/A</p>
+                                            </div>
+                                            <div class="card-badge">
+                                                <p class="card-badge-info-items">
+                                                    Ram: @item.Ram
+                                                </p>
+                                                <p class="card-badge-info-items">
+                                                    @item.DungLuong
+                                                </p>
+                                            </div>
+                                            <h5>  @String.Format(formatMoney, "{0:c0}", item.GiaSP)</h5>
+                                            <a href="@Url.Action("ThemMucYeuThich", "Favorite", new { IDSanPham = item.IDSanpham })" class="love-product">
+                                                <i class="fa-regular fa-heart"></i>
+                                            </a>
                                         </div>
-                                        <h5>  @String.Format(formatMoney, "{0:c0}", item.GiaSP)</h5>
-
-                                        <button style="margin-bottom: 25px;" class="love-product"><i class="fa-regular fa-heart"></i></button>
-
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                    
+                                </a>
 
-            }
+                            </div>
+                        }
 
-                    @*end product*@
+                    </div>
                 </div>
-            </div>
+                
+                            @*end product*@
+                        
 
+                        <!-- Import js của Owl Carousel -->
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+                        <script src="~/owl.carousel.min.js"></script>
 
-        </div>
+                        <script src="~/JS/StyleSilder.js"></script>
 
-    </div>
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                        <script src="path/to/owl.carousel.min.js"></script>
 
-
-
-
-    <!-- Import js của Owl Carousel -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="~/owl.carousel.min.js"></script>
-
-    <script src="~/JS/StyleSilder.js"></script>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="path/to/owl.carousel.min.js"></script>
 </body>
 </html>

@@ -11,8 +11,7 @@ namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Data.Entity;
-
+    
     public partial class SanPham
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,6 +19,7 @@ namespace WebApplication1.Models
         {
             this.CTDonHang = new HashSet<CTDonHang>();
             this.ThongKe = new HashSet<ThongKe>();
+            this.YeuThich = new HashSet<YeuThich>();
         }
     
         public int IDSanpham { get; set; }
@@ -51,6 +51,7 @@ namespace WebApplication1.Models
         public virtual PhanLoai PhanLoai { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThongKe> ThongKe { get; set; }
-        public EntityState State { get; internal set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<YeuThich> YeuThich { get; set; }
     }
 }
