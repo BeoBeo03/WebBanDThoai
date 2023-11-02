@@ -2,6 +2,9 @@
 @{
     KhachHang kh = (KhachHang)Session["TaiKhoan"];
 }
+@{
+    Cart cart = Session["Cart"] as Cart;
+}
 
 <!DOCTYPE html>
 <html>
@@ -90,6 +93,9 @@
                         </div>
                     </a>
                 </div>
+                @if (cart != null)
+            {
+
                 <div class="item cart_btn">
                     <a href="@Url.Action("Index","Cart")">
                         <div style="display: inline-block; position: relative; cursor: pointer" class="header__cart-wrap">
@@ -98,12 +104,13 @@
                             <span style=" position: absolute; border-radius: 50%; background-color: #fdd835; top: -20%;
                                 right: -8px; width: 25px; height: 20px; color: #000;
                                 text-align: center; line-height: 22px; padding: 0 4px;" class="header__cart-notice">
-                                2
+                                @cart.Total_quantity()
                             </span>
                             <p>Giỏ hàng</p>
                         </div>
                     </a>
                 </div>
+            }
                 @if (kh != null)
                 {
                     <div class="login">
@@ -212,13 +219,13 @@
                 }
             }
         }*@
-        
+
 
     </script>
 </body>
 </html>
 <script>
-    
+
     document.getElementById("searchBox").addEventListener("keyup", function (event) {
         if (event.keyCode === 13) {
             let keyword = this.value;

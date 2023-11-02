@@ -26,6 +26,7 @@ namespace WebApplication1.Models
         public Nullable<int> IDThongso { get; set; }
         public Nullable<int> IDPhanloai { get; set; }
         public string TenSP { get; set; }
+        public Nullable<double> GiaBanDau { get; set; }
         public Nullable<double> GiaSP { get; set; }
         public string AnhMinhHoa { get; set; }
         public string AnhMinhHoa1 { get; set; }

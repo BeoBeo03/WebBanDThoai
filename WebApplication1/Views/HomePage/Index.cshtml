@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
+@using WebApplication1.Models;
 @{ var formatMoney = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");}
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +22,11 @@
     <link rel="stylesheet" href="/Style/base.css">
 </head>
 <body>
-
+    <style>
+        .favorite-icon-red {
+            color: red;
+        }
+    </style>
 
 
     <!-- end header -->
@@ -117,14 +122,33 @@
 
             <div class="brand">
                 <h5>NHỮNG THƯƠNG HIỆU NỔI TIẾNG</h5>
-                <ul>
-                    <li><a href="category.html"><img src="~/Image/logo-apple.jpg" alt=""></a></li>
-                    <li><a href="category.html"><img src="~/Image/samsung.png" alt="samsung"></a></li>
-                    <li><a href="category.html"><img src="~/Image/oppo.png" alt=""></a></li>
-                    <li><a href="category.html"><img src="~/Image/realmi.png" alt=""></a></li>
+                <div style="display:flex" class="brand_content">
+                    <div style="margin-right:10px;" class="brand_content_img">
+                        <img style="width:280px;height:220px;" src="~/Image/brand_1.jpg" alt="Alternate Text" />
+                        <div style="padding: 10px; border: 1px solid #a29e9e; background-color: #b8b3b3;text-align:center; color:black;">IPHONE</div>
+                    </div>
+                    <div style="margin-right:10px;" class="brand_content_img">
+                        <img style="width:280px;height:220px;" src="~/Image/brand_2.png" alt="Alternate Text" />
+                        <div style="padding: 10px; border: 1px solid #a29e9e; background-color: #b8b3b3; text-align: center; color: black;">SAMSUNG</div>
+                    </div>
+                    <div style="margin-right:10px;" class="brand_content_img">
+                        <img style="width:280px;height:220px;" src="~/Image/brand_3.jpg" alt="Alternate Text" />
+                        <div style="padding: 10px; border: 1px solid #a29e9e; background-color: #b8b3b3; text-align: center; color: black;">REALME</div>
+                    </div>
+                    <div style="margin-right:10px;" class="brand_content_img">
+                        <img style="width:280px;height:220px;" src="~/Image/brand_4.jpg" alt="Alternate Text" />
+                        <div style="padding: 10px; border: 1px solid #a29e9e; background-color: #b8b3b3; text-align: center; color: black;">OPPO</div>
+                    </div>
 
-
-                </ul>
+                </div>
+                <div style=" margin-bottom: 20px; margin-top: 25px;width:1100px">
+                    <p style="font-size: 14px; font-style: italic; line-height: 24px;">
+                        iPhone, Samsung, Realme và Oppo là bốn trong những thương hiệu điện thoại di động nổi tiếng và có tiếng vang trong thị trường công nghệ toàn cầu. Mỗi thương hiệu mang đến một tư duy và phong cách riêng biệt.
+                        <strong>iPhone của Apple</strong> tập trung vào thiết kế đẹp và hệ thống sinh thái mạnh mẽ. Samsung quyết tâm đa dạng hóa sản phẩm và công nghệ tiên tiến. Realme tập trung vào sản phẩm chất lượng với giá trị tốt. Oppo với sự sáng tạo trong công nghệ camera và thiết kế. Sự đa dạng này cho phép người dùng
+                        lựa chọn sản phẩm phù hợp với nhu cầu và phong cách của họ.
+                    </p>
+                </div>
+            </div>
             </div>
             <div style="background: linear-gradient(rgb(0, 0, 0), rgb(220 200 34)) 0% 0% / cover;" class="product_list category_product">
                 <div class="product_list_head">
@@ -136,72 +160,18 @@
                     <div class="owl-carousel">
                         @foreach (var item in Model)
                         {
-                           
-                            
-                        <div style="width: 1100px;height:390px;" class="element">
-                            <a href="@Url.Action("Index","Product",new { id = item.IDSanpham })">
-                                <div style="height:100%;" class="card">
-                                    <img style="height:231px;" class="card-img-top" src="~/Image/@item.AnhMinhHoa" alt="Card image cap">
-                                    <div class="overlay">
-                                        <img class="overlay_img" src="~/Image/@item.AnhMoTa2" alt="">
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="product-name">
-                                            <p class="card-text">@item.TenSP | Chính hãng VN/A</p>
-                                        </div>
-                                        <div class="card-badge">
-                                            <p class="card-badge-info-items">
-                                                Ram: @item.Ram
-                                            </p>
-                                            <p class="card-badge-info-items">
-                                                @item.DungLuong
-
-                                            </p>
-                                        </div>
-                                        <h5> @String.Format(formatMoney, "{0:c0}", item.GiaSP)</h5>
 
 
-                                        <a href="@Url.Action("ThemMucYeuThich", "Favorite", new { IDSanPham = item.IDSanpham })" class="love-product">
-                                            <i class="fa-regular fa-heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </a>
-                            
-                        </div>
-                        }
-                        <!-- end product1 -->
-                    </div>
-                </div>
-            </div>
-            
-
-
-
-                        <!-- end product1 -->
-                    </div>
-                </div>
-
-            </div>
-            <div   class="container_list_items">
-                <div style="margin-left: 170px;" >
-                    <div style="margin: 20px 0;" class="product_all">
-                        <div style="font-size: 30px;text-align: center;" class="">TẤT CẢ SẢN PHẨM</div>
-                    </div>
-                    <div style="display: flex;flex-wrap: wrap;" class="container_slider_product">
-                        @foreach (var item in Model)
-                        {
-                            <div style="margin-top: 10px;height:390px;" class="element">
+                            <div style="width: 1100px;height:390px;" class="element">
                                 <a href="@Url.Action("Index","Product",new { id = item.IDSanpham })">
-                                    <div style="padding-left: 20px;" class="card">
-                                        <img style="width: 195px;height:231px;" class="card-img-top" src="~/Image/@item.AnhMinhHoa" alt="Card image cap">
-                                        <div style="margin-bottom:4px;" class="overlay">
-                                            <img style="height: 235px;border-radius: 15px 15px 0 0;width: 235px;" class="overlay_img" src="~/Image/@item.AnhMoTa2" alt="">
+                                    <div style="height:100%;" class="card">
+                                        <img style="height:231px;" class="card-img-top" src="~/Image/@item.AnhMinhHoa" alt="Card image cap">
+                                        <div class="overlay">
+                                            <img class="overlay_img" src="~/Image/@item.AnhMoTa2" alt="">
                                         </div>
                                         <div class="card-body">
                                             <div class="product-name">
-                                                <p class="card-text">@item.TenSP @item.DungLuong | Chính hãng VN/A</p>
+                                                <p class="card-text">@item.TenSP | Chính hãng VN/A</p>
                                             </div>
                                             <div class="card-badge">
                                                 <p class="card-badge-info-items">
@@ -209,33 +179,107 @@
                                                 </p>
                                                 <p class="card-badge-info-items">
                                                     @item.DungLuong
+
                                                 </p>
                                             </div>
-                                            <h5>  @String.Format(formatMoney, "{0:c0}", item.GiaSP)</h5>
+                                            <h5> @String.Format(formatMoney, "{0:c0}", item.GiaSP)</h5>
+
+
                                             <a href="@Url.Action("ThemMucYeuThich", "Favorite", new { IDSanPham = item.IDSanpham })" class="love-product">
-                                                <i class="fa-regular fa-heart"></i>
+                                                @{
+                                                    CNPMNC_ltEntities db = new CNPMNC_ltEntities();
+                                                    // Kiểm tra xem sản phẩm đã có trong bảng Favorite hay chưa
+                                                    if (Session["TaiKhoan"] != null)
+                                                    {
+                                                        var kh = (KhachHang)Session["TaiKhoan"];
+                                                        var isFavorited = db.YeuThich.Any(f => f.IDSanPham == item.IDSanpham && f.IDUser == kh.IDUser);
+                                                        string heartIconClass = isFavorited ? "fa-solid fa-heart favorite-icon-red" : "fa-regular fa-heart";
+                                                        <i class="@heartIconClass"></i>
+                                                    }
+                                                }
                                             </a>
                                         </div>
                                     </div>
+
                                 </a>
 
                             </div>
                         }
-
+                        <!-- end product1 -->
                     </div>
                 </div>
-                
-                            @*end product*@
-                        
+            </div>
 
-                        <!-- Import js của Owl Carousel -->
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-                        <script src="~/owl.carousel.min.js"></script>
 
-                        <script src="~/JS/StyleSilder.js"></script>
 
-                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                        <script src="path/to/owl.carousel.min.js"></script>
+
+            <!-- end product1 -->
+        </div>
+    </div>
+
+    </div>
+    <div class="container_list_items">
+        <div style="margin-left: 170px;">
+            <div style="margin: 20px 0;" class="product_all">
+                <div style="font-size: 30px;text-align: center;" class="">TẤT CẢ SẢN PHẨM</div>
+            </div>
+            <div style="display: flex;flex-wrap: wrap;" class="container_slider_product">
+                @foreach (var item in Model)
+                {
+                    <div style="margin-top: 10px;height:390px;" class="element">
+                        <a href="@Url.Action("Index","Product",new { id = item.IDSanpham })">
+                            <div style="padding-left: 20px;" class="card">
+                                <img style="width: 195px;height:231px;" class="card-img-top" src="~/Image/@item.AnhMinhHoa" alt="Card image cap">
+                                <div style="margin-bottom:4px;" class="overlay">
+                                    <img style="height: 235px;border-radius: 15px 15px 0 0;width: 235px;" class="overlay_img" src="~/Image/@item.AnhMoTa2" alt="">
+                                </div>
+                                <div class="card-body">
+                                    <div class="product-name">
+                                        <p class="card-text">@item.TenSP @item.DungLuong | Chính hãng VN/A</p>
+                                    </div>
+                                    <div class="card-badge">
+                                        <p class="card-badge-info-items">
+                                            Ram: @item.Ram
+                                        </p>
+                                        <p class="card-badge-info-items">
+                                            @item.DungLuong
+                                        </p>
+                                    </div>
+                                    <h5>  @String.Format(formatMoney, "{0:c0}", item.GiaSP)</h5>
+                                    <a href="@Url.Action("ThemMucYeuThich", "Favorite", new { IDSanPham = item.IDSanpham })" class="love-product">
+                                        @{
+                                            CNPMNC_ltEntities db = new CNPMNC_ltEntities();
+                                            // Kiểm tra xem sản phẩm đã có trong bảng Favorite hay chưa
+                                            if (Session["TaiKhoan"] != null)
+                                            {
+                                                var kh = (KhachHang)Session["TaiKhoan"];
+                                                var isFavorited = db.YeuThich.Any(f => f.IDSanPham == item.IDSanpham && f.IDUser == kh.IDUser);
+                                                string heartIconClass = isFavorited ? "fa-solid fa-heart favorite-icon-red" : "fa-regular fa-heart";
+                                                <i class="@heartIconClass"></i>
+                                            }
+                                        }
+                                    </a>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                }
+
+            </div>
+        </div>
+
+        @*end product*@
+
+
+        <!-- Import js của Owl Carousel -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="~/owl.carousel.min.js"></script>
+
+        <script src="~/JS/StyleSilder.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="path/to/owl.carousel.min.js"></script>
 
 </body>
 </html>

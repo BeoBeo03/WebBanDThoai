@@ -75,16 +75,23 @@ namespace WebApplication1.Controllers
         public ActionResult XoaYeuThich(int IDSanPham)
         {
             // Tìm bản ghi yêu thích theo ID sản phẩm và thực hiện xóa
-            var yeuThich = db.YeuThich.FirstOrDefault(y => y.IDSanPham == IDSanPham);
-            if (yeuThich != null)
+            // Tìm bản ghi yêu thích theo ID sản phẩm và thực hiện xóa
+            if (Session["TaiKhoan"] != null)
             {
-                db.YeuThich.Remove(yeuThich);
-                db.SaveChanges();
+                var kh = (KhachHang)Session["TaiKhoan"];
+                var yeuThich = db.YeuThich.FirstOrDefault(y => y.IDSanPham == IDSanPham && y.IDUser == kh.IDUser);
+                if (yeuThich != null)
+                {
+                    db.YeuThich.Remove(yeuThich);
+                    db.SaveChanges();
+                }
+                var favoriteProducts = db.YeuThich.Where(y => y.IDUser == kh.IDUser).ToList(); ;
+                return View("Index", favoriteProducts);
             }
-
-            // Trả về View danh sách yêu thích sau khi xóa
-            var favoriteProducts = db.YeuThich.Include("SanPham").ToList();
-            return View("Index", favoriteProducts);
+            else
+            {
+                return RedirectToAction("Login", "LoginRegister");
+            }
         }
     }
 }

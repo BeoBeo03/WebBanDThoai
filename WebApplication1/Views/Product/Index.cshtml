@@ -108,7 +108,7 @@
                     <div class="content_details_info">
                         <div class="content_details_info_price">
                             <h2>@Model.TenSP @Model.DungLuong , @Model.Ram</h2>
-                            <span> 18.990.000 ₫</span>
+                            <span>@String.Format(formatMoney, "{0:c0}", Model.GiaBanDau)</span>
                             <h3>  @String.Format(formatMoney, "{0:c0}", Model.GiaSP)</h3>
                         </div>
                         <div class="content_details_option">
@@ -118,13 +118,16 @@
                             </div>
                         </div>
                         <div class="content_details_btn">
-                            <button class="add_to_cart_btn">
+                            <a style="color:#000;font-size:15px" href="@Url.Action("AddToCart", "Cart", new {id = Model.IDSanpham })" class="add_to_cart_btn">
                                 <i class="fa-solid fa-cart-shopping"></i>
                                 <span>Thêm vào giỏ hàng</span>
-                            </button>
-                            <button class="add_to_favorite">
-                                <i class="fa-solid fa-heart"></i>
-                            </button>
+                            </a>
+                            <a style="color:#000;" href="@Url.Action("ThemMucYeuThich", "Favorite", new { IDSanPham = Model.IDSanpham })">
+
+                                <button style="height: 42px;" class="add_to_favorite">
+                                    <i class="fa-solid fa-heart"></i>
+                                </button>
+                            </a>
                         </div>
                         <div class="content_details_attribute_list">
                             <div class="attribute_header">

@@ -25,7 +25,7 @@ namespace WebApplication1.Models
         public Nullable<int> IDUser { get; set; }
         public string TenKH { get; set; }
         public string SDT { get; set; }
-        public Nullable<double> TongSoLuong { get; set; }
+        public Nullable<int> TongSoLuong { get; set; }
         public Nullable<System.DateTime> NgayBan { get; set; }
         public Nullable<decimal> TongThanhTien { get; set; }
         public Nullable<decimal> TienTraLai { get; set; }

@@ -138,6 +138,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CTDonHang.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -166,7 +167,6 @@
     <Compile Include="Models\PhanLoai.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\SanPham.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -203,9 +203,15 @@
     <Content Include="Image\banner5.png" />
     <Content Include="Image\banner6.png" />
     <Content Include="Image\bg_ip14.png" />
+    <Content Include="Image\brand_1.jpg" />
+    <Content Include="Image\brand_2.png" />
+    <Content Include="Image\brand_3.jpg" />
+    <Content Include="Image\brand_4.jpg" />
+    <Content Include="Image\checkout.png" />
     <Content Include="Image\cn_fb.png" />
     <Content Include="Image\cn_ytb.png" />
     <Content Include="Image\DreamShaper_v7_minion_1.jpg" />
+    <Content Include="Image\empty.png" />
     <Content Include="Image\facebook.png" />
     <Content Include="Image\icon_admin.png" />
     <Content Include="Image\icon_admin1.png" />
@@ -310,6 +316,9 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\HomePage\GioiThieu.cshtml" />
     <Content Include="Views\Favorite\Index.cshtml" />
+    <Content Include="Views\Cart\OrderDetail.cshtml" />
+    <Content Include="Views\Cart\CheckOut_Success.cshtml" />
+    <Content Include="Views\Cart\EmptyCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
