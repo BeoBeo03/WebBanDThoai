@@ -5,7 +5,7 @@
 {
     @Html.AntiForgeryToken()
     
-<div style="width:1200px;"  class="form-horizontal">
+<div style="width:1200px;" class="form-horizontal">
     <h3 style="margin-left:500px;margin-bottom:20px;">Thêm sản phẩm mới</h3>
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -17,7 +17,13 @@
         </div>
     </div>
 
-
+    <div class="form-group">
+        @Html.LabelFor(model => model.IDPhanloai, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.IDPhanloai, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.IDPhanloai, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
 
 
@@ -28,7 +34,20 @@
             @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "text-danger" })
         </div>
     </div>
-
+    <div class="form-group">
+        @Html.LabelFor(model => model.TongSoLuong, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TongSoLuong, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TongSoLuong, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.GiaBanDau, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.GiaBanDau, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.GiaBanDau, "", new { @class = "text-danger" })
+        </div>
+    </div>
     <div class="form-group">
         @Html.LabelFor(model => model.GiaSP, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">

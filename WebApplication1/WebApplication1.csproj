@@ -131,10 +131,13 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminProductController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CustomerUpdateController.cs" />
     <Compile Include="Controllers\FavoriteController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\LoginRegisterController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\QlyNhapHangController.cs" />
+    <Compile Include="Controllers\TimKiemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -202,6 +205,7 @@
     <Content Include="Image\banner4.jpg" />
     <Content Include="Image\banner5.png" />
     <Content Include="Image\banner6.png" />
+    <Content Include="Image\bbphone.png" />
     <Content Include="Image\bg_ip14.png" />
     <Content Include="Image\brand_1.jpg" />
     <Content Include="Image\brand_2.png" />
@@ -221,6 +225,7 @@
     <Content Include="Image\instagram.png" />
     <Content Include="Image\ip11pr.jpg" />
     <Content Include="Image\ip14.jpg" />
+    <Content Include="Image\ip14pro_amt2.png" />
     <Content Include="Image\iphone-11-128gb-trang-6-org.jpg" />
     <Content Include="Image\iphone-11-3-1-do.jpg" />
     <Content Include="Image\iphone-13-mini-hong-1.jpg" />
@@ -235,6 +240,7 @@
     <Content Include="Image\iphone4.jpg" />
     <Content Include="Image\iphone5.jpg" />
     <Content Include="Image\logo-apple.jpg" />
+    <Content Include="Image\logo.jpg" />
     <Content Include="Image\oppo.png" />
     <Content Include="Image\realmi.png" />
     <Content Include="Image\samsung-galaxy-a33-5g-500x500.jpg" />
@@ -319,6 +325,14 @@
     <Content Include="Views\Cart\OrderDetail.cshtml" />
     <Content Include="Views\Cart\CheckOut_Success.cshtml" />
     <Content Include="Views\Cart\EmptyCart.cshtml" />
+    <Content Include="Views\TimKiem\KQTimKiem.cshtml" />
+    <Content Include="Views\CustomerUpdate\Index.cshtml" />
+    <Content Include="Views\CustomerUpdate\Edit.cshtml" />
+    <Content Include="Views\Product\SanPhamTheoPhanLoai.cshtml" />
+    <Content Include="Views\QlyNhapHang\DanhSachDonHang.cshtml" />
+    <Content Include="Views\QlyNhapHang\DanhSachChuaDuyet.cshtml" />
+    <Content Include="Views\QlyNhapHang\ChiTietDH.cshtml" />
+    <Content Include="Views\QlyNhapHang\TinhTrangDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

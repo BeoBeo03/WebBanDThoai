@@ -27,11 +27,12 @@ namespace WebApplication1.Controllers
         }
         public ActionResult Create()
         {
+            ViewBag.IDPL = new SelectList(db.PhanLoai, "IDPhanloai", "TenPhanLoai");
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDSanpham,IDPhanloai,TenSP,GiaSP,AnhMinhHoa,AnhMinhHoa1,AnhMoTa1,AnhMoTa2,AnhMoTa3," +
+        public ActionResult Create([Bind(Include = "IDSanpham,IDPhanloai,TenSP,TongSoLuong,GiaBanDau,GiaSP,AnhMinhHoa,AnhMinhHoa1,AnhMoTa1,AnhMoTa2,AnhMoTa3," +
             "AnhMoTa4,AnhMoTa5,AnhMoTa6,MoTaSP,ManHinh,HDH,CameraSau,CameraTruoc,Chip,Ram,DungLuong,Sim,Pin")] SanPham sanPham,
            HttpPostedFileBase ImageFile1, HttpPostedFileBase ImageFile2, HttpPostedFileBase ImageFile3, HttpPostedFileBase ImageFile4
            , HttpPostedFileBase ImageFile5, HttpPostedFileBase ImageFile6, HttpPostedFileBase ImageFile7, HttpPostedFileBase ImageFile8)
@@ -89,7 +90,7 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("Index", "AdminProduct");
             }
 
-
+            ViewBag.IDPL = new SelectList(db.PhanLoai, "IDPhanloai", "TenPhanLoai");
             return View(sanPham);
         }
         public ActionResult Edit(int? id)
@@ -103,11 +104,12 @@ namespace WebApplication1.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.IDPL = new SelectList(db.PhanLoai, "IDPhanloai", "TenPhanLoai");
             return View(sanPham);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int? id, [Bind(Include = "IDSanpham,TenSP,GiaSP,AnhMinhHoa,AnhMinhHoa1,AnhMoTa1,AnhMoTa2,AnhMoTa3," +
+        public ActionResult Edit(int? id, [Bind(Include = "IDSanpham,IDPhanloai,TenSP,TongSoLuong,GiaBanDau,GiaSP,AnhMinhHoa,AnhMinhHoa1,AnhMoTa1,AnhMoTa2,AnhMoTa3," +
             "AnhMoTa4,AnhMoTa5,AnhMoTa6,MoTaSP,ManHinh,HDH,CameraSau,CameraTruoc,Chip,Ram,DungLuong,Sim,Pin")] SanPham sanPham
             , HttpPostedFileBase ImageFile1, HttpPostedFileBase ImageFile2, HttpPostedFileBase ImageFile3, HttpPostedFileBase ImageFile4
            , HttpPostedFileBase ImageFile5, HttpPostedFileBase ImageFile6, HttpPostedFileBase ImageFile7, HttpPostedFileBase ImageFile8)
@@ -115,8 +117,13 @@ namespace WebApplication1.Controllers
             if (ModelState.IsValid)
             {
                 SanPham sanPhamToUpdate = db.SanPham.Find(id);
+                if (sanPhamToUpdate != null)
+                {
+                    sanPhamToUpdate.IDPhanloai = sanPham.IDPhanloai;
                 sanPhamToUpdate.TenSP = sanPham.TenSP;
-                sanPhamToUpdate.GiaSP = sanPham.GiaSP;
+                    sanPhamToUpdate.TongSoLuong = sanPham.TongSoLuong;
+                    sanPhamToUpdate.GiaBanDau = sanPham.GiaBanDau;
+                    sanPhamToUpdate.GiaSP = sanPham.GiaSP;
                 sanPhamToUpdate.AnhMinhHoa = sanPham.AnhMinhHoa;
                 sanPhamToUpdate.AnhMinhHoa1 = sanPham.AnhMinhHoa1;
                 sanPhamToUpdate.AnhMoTa1 = sanPham.AnhMoTa1;
@@ -184,8 +191,11 @@ namespace WebApplication1.Controllers
 
                 db.SaveChanges();
                 return RedirectToAction("Index");
+                }
+                db.SaveChanges();
             }
             db.SaveChanges();
+            ViewBag.IDPL = new SelectList(db.PhanLoai, "IDPhanloai", "TenPhanLoai", sanPham.IDPhanloai);
             return View(sanPham);
         }
         public ActionResult Delete(int? id)

@@ -65,6 +65,16 @@
                             <div style="margin-bottom: 5px; text-align: right"> @DateTime.Now.ToShortDateString()</div>
                         </div>
                     </div>
+                    <div class="controls">
+                        <label class="control-label">Họ tên người nhận: </label>
+                        <samp>@TempData["loiten"]</samp>
+                        <input class="billing-address-name form-control" type="text" name="hoten" placeholder="Họ tên">
+                    </div>
+                    <div class="controls">
+                        <label class="control-label">Địa chỉ giao: </label>
+                        <samp>@TempData["loidiachi"]</samp>
+                        <input class="form-control" type="text" name="diachigiao" placeholder="Địa chỉ giao">
+                    </div>
                     <div style="display:flex;justify-content:space-between;margin-top:10px;color:black;font-size:15px">
                         <div style="float:right;" class="">Tổng số lượng mua: @Model.Total_quantity()</div>
                         <div style="float:right" class="">Tổng tiền: @String.Format(formatMoney, "{0:c0}", Model.Total_money())</div>

@@ -61,7 +61,7 @@
             <div class="row">
                 <div class="logo">
                     <a href="@Url.Action("Index","HomePage")">
-                        <img class="logo_image" src="~/Image/DreamShaper_v7_minion_1.jpg" alt="">
+                        <img class="logo_image" src="~/Image/bbphone.png" alt="">
                     </a>
                 </div>
                 <a style="text-decoration: none;list-style: none;color: #000;" class="category">
@@ -75,10 +75,12 @@
                 <!--  -->
 
                 <div class="search-input">
-                    <form class="form">
-                        <input type="text" id="searchBox" class="form_search " type="search" placeholder="Tìm kiếm" aria-label="Search">
-                        <button class="search_icon" type="submit"><i class="fas fa-search"></i></button>
+                    <form action="/TimKiem/KQTimKiem" method="post">
+
+                        <input  name="txtTimKiem" class="form_search " type="search" placeholder="Tìm kiếm" aria-label="Search">
+                        <button id="searchButton" class="search_icon" type="submit"><i class="fas fa-search"></i></button>
                     </form>
+                    
                 </div>
 
 
@@ -115,14 +117,15 @@
                 {
                     <div class="login">
                         <div class="login_btn">
-                            <a style="text-decoration: none;" href="@Url.Action("Index","AdminPage")" class="login_btn">
+                            <a style="text-decoration: none;" href="@Url.Action("Index", "CustomerUpdate", new { IDUser = kh.IDUser })" class="login_btn">
                                 <i class="fa-solid fa-user login_icon"></i>
                                 <p>@kh.TenKH</p>
 
                             </a>
                             <div class="sub-menu">
                                 <a style="float:left;margin-right:20px;color:black;" href="@Url.Action("LogOut", "LoginRegister")"><i style="margin-right:15px" class="fa-solid fa-right-to-bracket"></i>Đăng xuất</a>
-                                <a style="float: left; margin-right: 20px; color: black;" href="@Url.Action("Index", "AdminPage")"><i style="margin-right:15px" class="fa-solid fa-user"></i>Cá nhân</a>
+                                <a href="@Url.Action("TinhTrangDonHang","QlyNhapHang")">Lịch sử mua hàng</a>
+                                <a style="float: left; margin-right: 20px; color: black;" href="@Url.Action("Index", "CustomerUpdate", new { IDUser = kh.IDUser })"><i style="margin-right:15px" class="fa-solid fa-user"></i>Cá nhân</a>
 
                             </div>
                         </div>
@@ -204,34 +207,18 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <script>
-
-
-        @*let searchBox = document.getElementById("searchBox");
-        function runScript(e) {
-            //See notes about 'which' and 'key'
-            if (e.keyCode == 13) {
-                var keyword = searchBox.value;
-
-
-                if (keyword.trim() != "") {
-                    window.location = ` /HomePage/Index?SearchString=${keyword}`
-                }
-            }
-        }*@
-
-
-    </script>
+    
+    
 </body>
 </html>
 <script>
-
-    document.getElementById("searchBox").addEventListener("keyup", function (event) {
-        if (event.keyCode === 13) {
-            let keyword = this.value;
-            if (keyword.trim() != "") {
-                window.location = '/HomePage/Index?SearchString=' + keyword;
-            }
-        }
+    const searchInput = document.getElementById("searchInput");
+    const searchButton = document.getElementById("searchButton");
+    
+    searchButton.addEventListener("click", () => {
+        const SearchString = searchInput.value;
+        window.location.href = "/HomePage/Index?SearchString=" + SearchString;
     });
+    SearchString = encodeURIComponent(SearchString);
 </script>
+

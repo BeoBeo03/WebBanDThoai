@@ -51,10 +51,24 @@
 
                 </div>
             </a>
-            <a href="" class="item">
-                <img class="icon" src="~/Image/icon_thongke.jpg" alt="">
+            <a style="color:black;text-decoration:none;" href="@Url.Action("DanhSachDonHang","QlyNhapHang")" class="item">
+                <img class="icon" src="~/Image/icon_bil.png" alt="">
                 <div class="text">
-                    Thống kê doanh số
+                    Danh sách đơn hàng
+
+                </div>
+            </a>
+            <a style="color:black;text-decoration:none;" href="@Url.Action("DanhSachChuaDuyet","QlyNhapHang")" class="item">
+                <img class="icon" src="~/Image/icon_bill.png" alt="">
+                <div class="text">
+                    Chờ duyệt
+
+                </div>
+            </a>
+            <a style="color:black;text-decoration:none;" href="@Url.Action("Index","AdminFavorite")" class="item">
+                <img class="icon" src="~/Image/favorite1.jpg" alt="">
+                <div class="text">
+                    Khách hàng yêu thích
 
                 </div>
             </a>
@@ -83,6 +97,7 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Tên SP</th>
+                                <th>Số lượng</th>
                                 <th>Giá Bán</th>
                                 <th>Sản phẩm 1</th>
                                 <th>Sản phẩm 2</th>
@@ -96,45 +111,46 @@
                            
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>@Html.DisplayFor(modelItem => item.IDSanpham)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.TenSP)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.GiaSP)</td>
-                                        <td> <img style="width:100px;height:100px;" src="~/Image/@item.AnhMinhHoa"></td>
-                                        <td> <img style="width:100px;height:100px;" src="~/Image/@item.AnhMoTa2" /></td>
-                                       
-                                        <td class="modifi-space">
-                                            <div class="flex-modifibtn">
-                                                <button style="padding: 10px; margin-bottom: 15px; background-color: rgb(67 220 73); border: none; border-radius: 5px;">
-                                                    <div class="morebtn">
-                                                        @Html.ActionLink("Edit", "Edit", "AdminProduct", new { id = item.IDSanpham }, null)
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.IDSanpham)</td>
+                                <td>@Html.DisplayFor(modelItem => item.TenSP)</td>
+                                <td>@Html.DisplayFor(modelItem => item.TongSoLuong)</td>
+                                <td>@Html.DisplayFor(modelItem => item.GiaSP)</td>
+                                <td> <img style="width:100px;height:100px;" src="~/Image/@item.AnhMinhHoa"></td>
+                                <td> <img style="width:100px;height:100px;" src="~/Image/@item.AnhMoTa2" /></td>
 
+                                <td class="modifi-space">
+                                    <div class="flex-modifibtn">
+                                        <button style="padding: 10px; margin-bottom: 15px; background-color: rgb(67 220 73); border: none; border-radius: 5px;">
+                                            <div class="morebtn">
+                                                @Html.ActionLink("Edit", "Edit", "AdminProduct", new { id = item.IDSanpham }, null)
 
-                                                    </div>
-                                                </button>
 
                                             </div>
-                                        </td>
-                                        <td class="modifi-space">
-                                            <div class="flex-modifibtn">
-                                                <button  style="padding: 10px; margin-bottom: 15px; background-color: rgb(241 53 39); border: none; border-radius: 5px;">
-                                                    <div class="deletebtn">
-                                                        @Html.ActionLink("Delete", "Delete", "AdminProduct", new { id = item.IDSanpham }, null)
-                                                    </div>
-                                                </button>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="flex-modifibtn">
-                                                <button style="padding: 10px; margin-bottom: 15px; background-color: #FF9800; border: none; border-radius: 5px;">
-                                                    <div class="details">
-                                                        @Html.ActionLink("Details", "Details", "AdminProduct", new { id = item.IDSanpham }, null)
-                                                    </div>
-                                                </button>
-                                            </div>
-                                        </td>
+                                        </button>
 
-                                    </tr>
+                                    </div>
+                                </td>
+                                <td class="modifi-space">
+                                    <div class="flex-modifibtn">
+                                        <button style="padding: 10px; margin-bottom: 15px; background-color: rgb(241 53 39); border: none; border-radius: 5px;">
+                                            <div class="deletebtn">
+                                                @Html.ActionLink("Delete", "Delete", "AdminProduct", new { id = item.IDSanpham }, null)
+                                            </div>
+                                        </button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="flex-modifibtn">
+                                        <button style="padding: 10px; margin-bottom: 15px; background-color: #FF9800; border: none; border-radius: 5px;">
+                                            <div class="details">
+                                                @Html.ActionLink("Details", "Details", "AdminProduct", new { id = item.IDSanpham }, null)
+                                            </div>
+                                        </button>
+                                    </div>
+                                </td>
+
+                            </tr>
                                 }
 
                             

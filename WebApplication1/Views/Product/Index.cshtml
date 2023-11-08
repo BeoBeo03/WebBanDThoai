@@ -60,7 +60,7 @@
             <dv class="content_breadcrum">
 
                 <ul style="padding: 0;border-bottom: 2px solid rgb(233, 226, 226);padding-bottom: 10px;margin-bottom: 15px;margin-right: 120px;" class="breadcrumbs">
-                    <li> <a href="main.html">Điện thoại</a></li>
+                    <li> <a href="@Url.Action("Index","HomePage")">Điện thoại</a></li>
                     <li>
                         <span>></span>
                         <a href="">Điện thoại iPhone</a>
@@ -111,12 +111,7 @@
                             <span>@String.Format(formatMoney, "{0:c0}", Model.GiaBanDau)</span>
                             <h3>  @String.Format(formatMoney, "{0:c0}", Model.GiaSP)</h3>
                         </div>
-                        <div class="content_details_option">
-                            <div class="content_details_quantity">
-                                <span>Số lượng: </span>
-                                <input type="number" min="1" max="50" name="" id="">
-                            </div>
-                        </div>
+                        
                         <div class="content_details_btn">
                             <a style="color:#000;font-size:15px" href="@Url.Action("AddToCart", "Cart", new {id = Model.IDSanpham })" class="add_to_cart_btn">
                                 <i class="fa-solid fa-cart-shopping"></i>

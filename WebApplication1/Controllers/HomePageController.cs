@@ -13,13 +13,14 @@ namespace WebApplication1.Controllers
         CNPMNC_ltEntities db = new CNPMNC_ltEntities();
         public ActionResult Index(string SearchString)
         {
-            
-                var products = db.SanPham.ToList();
+            IQueryable<SanPham> products = db.SanPham; // db.SanPham có kiểu DbSet
+
             if (!string.IsNullOrEmpty(SearchString))
             {
-                products = products.Where(p => p.TenSP.Contains(SearchString)).ToList();
+                products = products.Where(p => p.TenSP.Contains(SearchString));
             }
-            return View(products);
+
+            return View(products.ToList());
 
         }
         public ActionResult GioiThieu()

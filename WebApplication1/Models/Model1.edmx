@@ -29,6 +29,10 @@
           <Property Name="NgayBan" Type="datetime" />
           <Property Name="TongThanhTien" Type="decimal" Precision="18" Scale="0" />
           <Property Name="TienTraLai" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TinhTrang" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgayGiao" Type="datetime" />
+          <Property Name="Ten" Type="nvarchar" MaxLength="100" />
+          <Property Name="DCGiao" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="KhachHang">
           <Key>
@@ -45,7 +49,7 @@
           <Key>
             <PropertyRef Name="IDPhanloai" />
           </Key>
-          <Property Name="IDPhanloai" Type="int" Nullable="false" />
+          <Property Name="IDPhanloai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenPhanLoai" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="SanPham">
@@ -53,9 +57,9 @@
             <PropertyRef Name="IDSanpham" />
           </Key>
           <Property Name="IDSanpham" Type="int" Nullable="false" />
-          <Property Name="IDThongso" Type="int" />
           <Property Name="IDPhanloai" Type="int" />
           <Property Name="TenSP" Type="nvarchar" MaxLength="100" />
+          <Property Name="TongSoLuong" Type="int" />
           <Property Name="GiaBanDau" Type="float" />
           <Property Name="GiaSP" Type="float" />
           <Property Name="AnhMinhHoa" Type="nvarchar" MaxLength="100" />
@@ -264,6 +268,10 @@
           <Property Name="NgayBan" Type="DateTime" Precision="3" />
           <Property Name="TongThanhTien" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="TienTraLai" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TinhTrang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NgayGiao" Type="DateTime" Precision="3" />
+          <Property Name="Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DCGiao" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CTDonHang" Relationship="Self.fk_ctdonhang_donhang" FromRole="DonHang" ToRole="CTDonHang" />
           <NavigationProperty Name="KhachHang" Relationship="Self.fk_donhang_khachhang" FromRole="DonHang" ToRole="KhachHang" />
           <NavigationProperty Name="ThongKe" Relationship="Self.fk_thongke_donhang" FromRole="DonHang" ToRole="ThongKe" />
@@ -285,7 +293,7 @@
           <Key>
             <PropertyRef Name="IDPhanloai" />
           </Key>
-          <Property Name="IDPhanloai" Type="Int32" Nullable="false" />
+          <Property Name="IDPhanloai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenPhanLoai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="SanPham" Relationship="Self.pk_phanloai_sanpham" FromRole="PhanLoai" ToRole="SanPham" />
         </EntityType>
@@ -294,9 +302,9 @@
             <PropertyRef Name="IDSanpham" />
           </Key>
           <Property Name="IDSanpham" Type="Int32" Nullable="false" />
-          <Property Name="IDThongso" Type="Int32" />
           <Property Name="IDPhanloai" Type="Int32" />
           <Property Name="TenSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TongSoLuong" Type="Int32" />
           <Property Name="GiaBanDau" Type="Double" />
           <Property Name="GiaSP" Type="Double" />
           <Property Name="AnhMinhHoa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -512,6 +520,10 @@
                 <ScalarProperty Name="NgayBan" ColumnName="NgayBan" />
                 <ScalarProperty Name="TongThanhTien" ColumnName="TongThanhTien" />
                 <ScalarProperty Name="TienTraLai" ColumnName="TienTraLai" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+                <ScalarProperty Name="NgayGiao" ColumnName="NgayGiao" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
+                <ScalarProperty Name="DCGiao" ColumnName="DCGiao" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -539,9 +551,9 @@
             <EntityTypeMapping TypeName="CNPMNC_ltModel.SanPham">
               <MappingFragment StoreEntitySet="SanPham">
                 <ScalarProperty Name="IDSanpham" ColumnName="IDSanpham" />
-                <ScalarProperty Name="IDThongso" ColumnName="IDThongso" />
                 <ScalarProperty Name="IDPhanloai" ColumnName="IDPhanloai" />
                 <ScalarProperty Name="TenSP" ColumnName="TenSP" />
+                <ScalarProperty Name="TongSoLuong" ColumnName="TongSoLuong" />
                 <ScalarProperty Name="GiaBanDau" ColumnName="GiaBanDau" />
                 <ScalarProperty Name="GiaSP" ColumnName="GiaSP" />
                 <ScalarProperty Name="AnhMinhHoa" ColumnName="AnhMinhHoa" />

@@ -29,6 +29,10 @@ namespace WebApplication1.Models
         public Nullable<System.DateTime> NgayBan { get; set; }
         public Nullable<decimal> TongThanhTien { get; set; }
         public Nullable<decimal> TienTraLai { get; set; }
+        public string TinhTrang { get; set; }
+        public Nullable<System.DateTime> NgayGiao { get; set; }
+        public string Ten { get; set; }
+        public string DCGiao { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTDonHang> CTDonHang { get; set; }

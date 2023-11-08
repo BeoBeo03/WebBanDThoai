@@ -23,9 +23,94 @@
 </head>
 <body>
     <style>
+        .element:nth-child(n+5) {
+            display: none;
+        }
+
         .favorite-icon-red {
             color: red;
         }
+
+        .homepage-title {
+            display: flex;
+            align-items: center;
+            margin-top: 70px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 15px;
+        }
+
+            .homepage-title h1 {
+                margin-right: 20px;
+                margin-left: 20px;
+            }
+
+            .homepage-title .hr {
+                flex-grow: 1;
+                height: 1.5px;
+                background-color: black;
+                opacity: 0.5;
+                width: 2%;
+            }
+
+        .homepage {
+            display: flex;
+            justify-content: space-between;
+            margin-left: 100px;
+            margin-top: 50px;
+        }
+
+        .homepage-image {
+            width: 420px;
+            height: 350px;
+            border-radius: 10px;
+        }
+
+        .homepage-card {
+            flex: 1;
+            margin-right: -80px;
+        }
+
+            .homepage-card:last-child {
+                margin-right: 0;
+            }
+
+        .homepage-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+            .homepage-card::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 80%;
+                height: 99%;
+                background: rgba(0, 0, 0, 0.5); /* Màu nền làm mờ */
+                opacity: 0;
+                transition: opacity 0.3s;
+                border-radius: 10px;
+            }
+
+            .homepage-card:hover::after {
+                opacity: 0.4;
+            }
+
+            .homepage-card p {
+                position: absolute;
+                top: 38%;
+                left: 35%;
+                transform: translate(-50%, -50%);
+                color: wheat;
+                font-weight: bold;
+                font-size: 50px;
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+
+            .homepage-card:hover p {
+                opacity: 1;
+            }
     </style>
 
 
@@ -36,28 +121,18 @@
             <div class="row_navbar">
 
                 <div class="nav_content">
+                    
                     <li class="nav-item">
-
-                        <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-mobile-screen-button"></i>Điện thoại</a>
-                        <ul class="sub-menu">
-                            <li><a href="#">iPhone</a></li>
-                            <li><a href="#">Samsung</a></li>
-                            <li><a href="#">Xiaomi</a></li>
-                            <li><a href="#">Oppo</a></li>
-                            <li><a href="#">Nokia</a></li>
-                        </ul>
+                        <a class="nav-link" href="@Url.Action("SanPhamTheoPhanLoai", "Product", new { phanloai = "iphone" })"><i style="font-size: 25px;" class="fa-brands fa-apple"></i>IOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i style="font-size: 25px;" class="fa-brands fa-apple"></i>IOS</a>
+                        <a class="nav-link" href="@Url.Action("SanPhamTheoPhanLoai", "Product", new { phanloai = "samsung" })"><i class="fa-solid fa-tablet"></i>SAMSUNG</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-tablet"></i>Tablet</a>
+                        <a class="nav-link" href="#"><i class="ri-headphone-line"></i>REALME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="ri-headphone-line"></i>Phụ kiện</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="news-category.html"><i class="ri-newspaper-line"></i>Tin tức</a>
+                        <a class="nav-link" href="news-category.html"><i class="ri-newspaper-line"></i>OPPO</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("GioiThieu","HomePage")"><i class="ri-profile-line"></i>Giới thiệu</a>
@@ -149,72 +224,72 @@
                     </p>
                 </div>
             </div>
-            </div>
-            <div style="background: linear-gradient(rgb(0, 0, 0), rgb(220 200 34)) 0% 0% / cover;" class="product_list category_product">
-                <div class="product_list_head">
-                    <a style="text-decoration: none;list-style: none;" href="">
-                        <h3>IPHONE</h3>
-                    </a>
-                </div>
-                <div class="container_slider_product">
-                    <div class="owl-carousel">
-                        @foreach (var item in Model)
-                        {
-
-
-                            <div style="width: 1100px;height:390px;" class="element">
-                                <a href="@Url.Action("Index","Product",new { id = item.IDSanpham })">
-                                    <div style="height:100%;" class="card">
-                                        <img style="height:231px;" class="card-img-top" src="~/Image/@item.AnhMinhHoa" alt="Card image cap">
-                                        <div class="overlay">
-                                            <img class="overlay_img" src="~/Image/@item.AnhMoTa2" alt="">
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="product-name">
-                                                <p class="card-text">@item.TenSP | Chính hãng VN/A</p>
-                                            </div>
-                                            <div class="card-badge">
-                                                <p class="card-badge-info-items">
-                                                    Ram: @item.Ram
-                                                </p>
-                                                <p class="card-badge-info-items">
-                                                    @item.DungLuong
-
-                                                </p>
-                                            </div>
-                                            <h5> @String.Format(formatMoney, "{0:c0}", item.GiaSP)</h5>
-
-
-                                            <a href="@Url.Action("ThemMucYeuThich", "Favorite", new { IDSanPham = item.IDSanpham })" class="love-product">
-                                                @{
-                                                    CNPMNC_ltEntities db = new CNPMNC_ltEntities();
-                                                    // Kiểm tra xem sản phẩm đã có trong bảng Favorite hay chưa
-                                                    if (Session["TaiKhoan"] != null)
-                                                    {
-                                                        var kh = (KhachHang)Session["TaiKhoan"];
-                                                        var isFavorited = db.YeuThich.Any(f => f.IDSanPham == item.IDSanpham && f.IDUser == kh.IDUser);
-                                                        string heartIconClass = isFavorited ? "fa-solid fa-heart favorite-icon-red" : "fa-regular fa-heart";
-                                                        <i class="@heartIconClass"></i>
-                                                    }
-                                                }
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </a>
-
-                            </div>
-                        }
-                        <!-- end product1 -->
-                    </div>
-                </div>
-            </div>
-
-
-
-
-            <!-- end product1 -->
         </div>
+        <div style="background: linear-gradient(rgb(0, 0, 0), rgb(220 200 34)) 0% 0% / cover;" class="product_list category_product">
+            <div class="product_list_head">
+                <a style="text-decoration: none;list-style: none;" href="">
+                    <h3>IPHONE</h3>
+                </a>
+            </div>
+            <div class="container_slider_product">
+                <div class="owl-carousel">
+                    @foreach (var item in Model)
+                    {
+
+
+                        <div style="width: 1100px;height:390px;" class="element">
+                            <a href="@Url.Action("Index","Product",new { id = item.IDSanpham })">
+                                <div style="height:100%;" class="card">
+                                    <img style="height:231px;" class="card-img-top" src="~/Image/@item.AnhMinhHoa" alt="Card image cap">
+                                    <div class="overlay">
+                                        <img class="overlay_img" src="~/Image/@item.AnhMoTa2" alt="">
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="product-name">
+                                            <p class="card-text">@item.TenSP | Chính hãng VN/A</p>
+                                        </div>
+                                        <div class="card-badge">
+                                            <p class="card-badge-info-items">
+                                                Ram: @item.Ram
+                                            </p>
+                                            <p class="card-badge-info-items">
+                                                @item.DungLuong
+
+                                            </p>
+                                        </div>
+                                        <h5> @String.Format(formatMoney, "{0:c0}", item.GiaSP)</h5>
+
+
+                                        <a href="@Url.Action("ThemMucYeuThich", "Favorite", new { IDSanPham = item.IDSanpham })" class="love-product">
+                                            @{
+                                                CNPMNC_ltEntities db = new CNPMNC_ltEntities();
+                                                // Kiểm tra xem sản phẩm đã có trong bảng Favorite hay chưa
+                                                if (Session["TaiKhoan"] != null)
+                                                {
+                                                    var kh = (KhachHang)Session["TaiKhoan"];
+                                                    var isFavorited = db.YeuThich.Any(f => f.IDSanPham == item.IDSanpham && f.IDUser == kh.IDUser);
+                                                    string heartIconClass = isFavorited ? "fa-solid fa-heart favorite-icon-red" : "fa-regular fa-heart";
+                                                    <i class="@heartIconClass"></i>
+                                                }
+                                            }
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </a>
+
+                        </div>
+                    }
+                    <!-- end product1 -->
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- end product1 -->
+    </div>
     </div>
 
     </div>
@@ -224,6 +299,7 @@
                 <div style="font-size: 30px;text-align: center;" class="">TẤT CẢ SẢN PHẨM</div>
             </div>
             <div style="display: flex;flex-wrap: wrap;" class="container_slider_product">
+
                 @foreach (var item in Model)
                 {
                     <div style="margin-top: 10px;height:390px;" class="element">
@@ -233,7 +309,7 @@
                                 <div style="margin-bottom:4px;" class="overlay">
                                     <img style="height: 235px;border-radius: 15px 15px 0 0;width: 235px;" class="overlay_img" src="~/Image/@item.AnhMoTa2" alt="">
                                 </div>
-                                <div class="card-body">
+                                <div style="margin-top:12px" class="card-body">
                                     <div class="product-name">
                                         <p class="card-text">@item.TenSP @item.DungLuong | Chính hãng VN/A</p>
                                     </div>
@@ -268,7 +344,60 @@
 
             </div>
         </div>
+        <div style="display: flex; margin-left: 700px; margin-top: 30px; color: #4f4fd4 ">
 
+            <button style="border:none;font-size:16px;background:none;background-color:none;text-align:center" id="show-more-button"><< Xem thêm >></button>
+            <button style="border: none; font-size: 16px; background: none; background-color: none; text-align: center " id="hide-button"><< Đóng lại >></button>
+        </div>
+        <div style="margin-top: 50px;" class="inner-wrapper">
+
+            <div style="display: flex; margin-top: 60px; margin-left: 250px;" class="inner-wrapper__container">
+
+                <div style="width: 500px; font-size: 16px; margin-top: 100px; letter-spacing: 1px; " class="inner-wrapper__content">
+                    <h2>Cách chuyển dữ liệu từ Android sang iPhone cực kỳ đơn giản</h2>
+                    <span style="font-family: DWFutura, sans-serif">
+                        Để chuyển dữ liệu từ Android sang iPhone, bạn có thể sử dụng ứng dụng "Chuyển đổi dữ liệu" của Apple hoặc Google,
+                        hoặc dịch vụ bên ngoài như "Move to iOS"
+                    </span>
+                    <a style="color: #4f4fd4; margin-left: 15px; " class="nav-link" href="@Url.Action("SanPhamTheoPhanLoai", "Product", new { phanloai = "Đôi" })">Xem thêm</a>
+                </div>
+                <img style="width:600px;height:400px;margin-right:50px" src="~/Image/banner_1.png" alt="Alternate Text" />
+            </div>
+
+        </div>
+        @**@
+        <div style="margin-top: 50px;" class="inner-wrapper">
+            <img style="width: 100%; height: 570px; text-align: center" src="~/Image/banner_3.jpg" alt="Alternate Text" />
+            <div style="display: flex; margin-top: 60px; margin-left: 120px;" class="inner-wrapper__container">
+                <img style="width:600px;height:400px;margin-right:50px" src="~/Image/banner_2.png" alt="Alternate Text" />
+                <div style="width: 500px; font-size: 16px; margin-top: 100px; letter-spacing: 1px; " class="inner-wrapper__content">
+                    <h2>Cách phân biệt iPhone qua kiểu máy</h2>
+                    <span style="font-family: DWFutura, sans-serif">
+                        Mã iPhone có dạng chung MxxxYY/A trong đó M sẽ thể hiện loại máy, còn YY sẽ là nguồn gốc máy ở thị trường nào. Ví dụ: LL- Mỹ, VN- Việt Nam, J- Nhật,…
+                        Để phân biệt các loại iPhone, hãy để ý đến ký tự đầu tiên của mã kiểu máy.
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="homepage-title">
+            <div style="margin-left:100px;margin-top:9px" class="hr"></div>
+            <h1>APPLE</h1>
+            <div style="margin-right: 100px; margin-top: 9px" class="hr"></div>
+        </div>
+        <div class="homepage">
+            <section class="homepage-card">
+                <img class="homepage-image" src="~/Image/quangcao_1.jpg">
+                <p>IPHONE</p>
+            </section>
+            <section class="homepage-card">
+                <img class="homepage-image" src="~/Image/quangcao_2.png">
+                <p>IPHONE</p>
+            </section>
+            <section class="homepage-card">
+                <img class="homepage-image" src="~/Image/quangcao_3.jpg">
+                <p>IPHONE</p>
+            </section>
+        </div>
         @*end product*@
 
 
@@ -280,6 +409,18 @@
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="path/to/owl.carousel.min.js"></script>
+        <script>
+            // Thêm sự kiện click cho nút "Xem thêm"
+            document.getElementById("show-more-button").addEventListener("click", function () {
+                // Lấy tất cả các phần tử sản phẩm
+                var productElements = document.querySelectorAll(".element");
 
+                // Hiển thị tất cả các sản phẩm còn lại
+                productElements.forEach(function (element) {
+                    element.style.display = "block";
+                });
+            });
+
+        </script>
 </body>
 </html>

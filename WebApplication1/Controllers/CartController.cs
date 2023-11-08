@@ -81,14 +81,27 @@ namespace WebApplication1.Controllers
         {
             if (form != null)
             {
-                KhachHang nv = Session["TaiKhoan"] as KhachHang;
+                String ten = Request.Form["hoten"].ToString();
+                String diachi = Request.Form["diachigiao"].ToString();
+                if (ten == "")
+                {
+                    TempData["loiten"] = "Vui lòng nhập tên!";
+                    return RedirectToAction("OrderDetail", "Cart");
+                }
+                if (diachi == "")
+                {
+                    TempData["loidiachi"] = "Vui lòng nhập đại chỉ!";
+                    return RedirectToAction("OrderDetail", "Cart");
+                }
+                
                 KhachHang user = Session["TaiKhoan"] as KhachHang;
                 Cart cart = Session["Cart"] as Cart;
                 DonHang _order = new DonHang();
+                _order.Ten = ten;
+                _order.IDUser = user.IDUser;
+                _order.DCGiao = diachi;
+                _order.TinhTrang = "Chưa duyệt";
 
-
-                _order.TenKH = form["TenKH"];
-                _order.SDT = (form["SDT"]);
                 _order.TongSoLuong = cart.Total_quantity();
                 _order.NgayBan = DateTime.Now;
                 _order.TongThanhTien = (decimal)cart.Total_money();
@@ -105,13 +118,23 @@ namespace WebApplication1.Controllers
                 {
                     // lưu dòng sản phẩm vào chi tiết hóa đơn
                     CTDonHang _order_detail = new CTDonHang();
+                    _order_detail.IDDonHang = _order.IDDonHang;
                     _order_detail.IDSanpham = item._sanpham.IDSanpham;
 
                     _order_detail.TenSP = item._sanpham.TenSP;
                     _order_detail.Soluong = item._soluong;
                     _order_detail.GiaTien = item._sanpham.GiaSP;
                     _order_detail.ThanhTien = item._soluong * item._sanpham.GiaSP;
+                    var product = db.SanPham.Find(item._sanpham.IDSanpham);
+                    if (product != null)
+                    {
+                        product.TongSoLuong -= item._soluong;
 
+                        if (product.TongSoLuong == 0 || product.TongSoLuong < 0)
+                        {
+                            product.TongSoLuong = 0;
+                        }
+                    }
                     db.CTDonHang.Add(_order_detail);
                     //Số lượng tồn khi đặt mua hàng sẽ trừ vào tổng số lượng
                     db.SaveChanges();

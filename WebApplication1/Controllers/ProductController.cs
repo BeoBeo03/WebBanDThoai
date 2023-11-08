@@ -17,5 +17,13 @@ namespace WebApplication1.Controllers
             var product = db.SanPham.Find(id);
             return View(product);
         }
+        public ActionResult SanPhamTheoPhanLoai(string phanloai)
+        {
+            // Thực hiện truy vấn SQL để lấy sản phẩm theo phân loại
+            List<SanPham> products = db.SanPham.Where(p => p.PhanLoai.TenPhanLoai == phanloai).ToList();
+
+            // Truyền danh sách sản phẩm đã lọc vào view
+            return View(products);
+        }
     }
 }
