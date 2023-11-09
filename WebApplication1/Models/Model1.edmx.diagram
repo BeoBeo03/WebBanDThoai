@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="24d63698ec9f4ebe9096090413d22e55" Name="Diagram1" ZoomLevel="70">
+      <Diagram DiagramId="43515bb4a92d4719aeef262d6463ac63" Name="Diagram1" ZoomLevel="69">
         <EntityTypeShape EntityType="CNPMNC_ltModel.CTDonHang" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CNPMNC_ltModel.DonHang" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CNPMNC_ltModel.KhachHang" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />

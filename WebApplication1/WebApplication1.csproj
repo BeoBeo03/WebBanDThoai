@@ -138,6 +138,7 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\QlyNhapHangController.cs" />
     <Compile Include="Controllers\TimKiemController.cs" />
+    <Compile Include="Controllers\TKDSController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -176,6 +177,7 @@
     <Compile Include="Models\ThongKe.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ThongKeTheoTuanModel.cs" />
     <Compile Include="Models\YeuThich.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -298,6 +300,7 @@
     <Content Include="Style\login-register.css" />
     <Content Include="Style\slide.css" />
     <Content Include="Style\style.css" />
+    <Content Include="Style\TKDS.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -333,6 +336,7 @@
     <Content Include="Views\QlyNhapHang\DanhSachChuaDuyet.cshtml" />
     <Content Include="Views\QlyNhapHang\ChiTietDH.cshtml" />
     <Content Include="Views\QlyNhapHang\TinhTrangDonHang.cshtml" />
+    <Content Include="Views\TKDS\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
