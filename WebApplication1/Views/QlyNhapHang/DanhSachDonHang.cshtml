@@ -94,25 +94,25 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().IDDonHang)
+                            ID
                         </th>
                         <th>
                             <div>Tên khách hàng</div>
                         </th>
-
+                        <th>Địa chỉ</th>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().NgayBan)
+                            Ngày đặt
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().NgayGiao)
-                        </th>
-
-                        <th>
-                            @Html.DisplayNameFor(model => model.First().TongThanhTien)
+                            Ngày giao
                         </th>
 
                         <th>
-                            @Html.DisplayNameFor(model => model.First().TinhTrang)
+                            Tổng tiền
+                        </th>
+
+                        <th>
+                            Tình trạng
                         </th>
                         <th>Chức năng</th>
                     </tr>
@@ -122,40 +122,42 @@
                     {
                         using (Html.BeginForm("HuyDonHang", "QlyNhapHang", new { @madh = item.IDDonHang }))
                         {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.IDDonHang)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Ten)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DCGiao)
-                                </td>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IDDonHang)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ten)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DCGiao)
+                        </td>
 
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.NgayBan)
-                                </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NgayBan)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NgayGiao)
+                        </td>
+                        <td>
+                            @string.Format("{0:0,0}", @item.TongThanhTien) VNĐ
+                        </td>
 
-                                <td>
-                                    @string.Format("{0:0,0}", @item.TongThanhTien) VNĐ
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TinhTrang)
-                                </td>
-                                <td>
-                                    @if (item.TinhTrang != "Đã hủy" || @String.Format(formatMoney, "{0:c0}", item.TongThanhTien) != "Đã thanh toán")
-                                    {
-                                        @Html.ActionLink("Chi tiết", "ChiTietDH", "QlyNhapHang", new { madh = item.IDDonHang }, new { @class = "btn btn-primary btn-sm", @title = "Xem chi tiết" })
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TinhTrang)
+                        </td>
+                        <td style=" border: none; display: flex;">
+                            @if (item.TinhTrang != "Đã hủy" || @String.Format(formatMoney, "{0:c0}", item.TongThanhTien) != "Đã thanh toán")
+                            {
+                                @Html.ActionLink("Chi tiết", "ChiTietDH", "QlyNhapHang", new { madh = item.IDDonHang }, new { @class = "btn btn-primary btn-sm", @title = "Xem chi tiết" })
 
 
-                                        <button class="btn btn-danger btn-sm" title="Hủy đơn hàng" type="submit">Xóa đơn</button>
+                                <button class="btn btn-danger btn-sm" title="Hủy đơn hàng" type="submit">Xóa đơn</button>
 
 
-                                    }
-                                </td>
-                            </tr>
+                            }
+                        </td>
+                    </tr>
                         }
                     }
                 </tbody>

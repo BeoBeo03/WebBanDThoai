@@ -49,6 +49,7 @@ namespace WebApplication1.Controllers
             DonHang dh = db.DonHang.Where(n => n.IDDonHang == madh).SingleOrDefault();
 
             dh.TinhTrang = "Đã duyệt";
+            dh.NgayGiao = DateTime.Now;
             db.Entry(dh).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("DanhSachChuaDuyet", "QlyNhapHang");

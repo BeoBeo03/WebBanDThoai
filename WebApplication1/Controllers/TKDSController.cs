@@ -18,8 +18,10 @@ namespace WebApplication1.Controllers
         {
             ViewBag.CountOrderDetail = db.CTDonHang.Count();
             ViewBag.CountProduct = db.SanPham.Count();
-            ViewBag.CountOrder = db.DonHang.Count();
             
+            TempData["TongDonHang"] = db.DonHang.Where(n => n.TinhTrang == "Đã duyệt").Count();
+
+           TempData["TongDoanhThu"] = db.DonHang.Where(n => n.TinhTrang == "Đã duyệt" /*&& n.NgayGiao.ToString() != ""*/).Sum(n => n.TongThanhTien);
             if (Session["TaiKhoanAdmin"] == null)
             {
                 return RedirectToAction("Login", "LoginRegister");

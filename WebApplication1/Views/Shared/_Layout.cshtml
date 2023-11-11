@@ -40,7 +40,7 @@
             border: 1px solid #ddd;
             top: 60px;
             z-index: 1;
-            width: 140px;
+            width: 180px;
             border-radius: 5px;
             box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1), 0 0 0 2px rgb(255,255,255), 0.3em 0.3em 1em rgba(0,0,0,0.3);
         }
@@ -54,6 +54,32 @@
             width: 150px;
             height: 100px;
         }
+        .sub-menu-dm{
+            display:none;
+        }
+        .category_icon:hover .sub-menu-dm {
+            display: block;
+            position: absolute;
+            background: #fff;
+            border: 1px solid #ddd;
+            top: 75px;
+            z-index: 1;
+            width: 100px;
+            height:200px;
+            border-radius: 5px;
+            box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1), 0 0 0 2px rgb(255,255,255), 0.3em 0.3em 1em rgba(0,0,0,0.3);
+        }
+
+        .sub-menu-dm:after {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            left: 0px;
+            top: -10px;
+            width: 150px;
+            height: 20px;
+            
+        }
     </style>
     <div class="header">
         <div class="container">
@@ -66,8 +92,22 @@
                 </div>
                 <a style="text-decoration: none;list-style: none;color: #000;" class="category">
                     <div class="category_icon">
-                        <i style="margin-right:10px;" class="fa-solid fa-bars"></i>
+                        <i style="margin-right:10px;margin-top:5px" class="fa-solid fa-bars"></i>
                         <span>Danh mục</span>
+                        <div  class="sub-menu-dm">
+                            <a style="margin-right: 84px; margin-top: 10px; float: left;margin-left:8px " class="nav-link" href="@Url.Action("SanPhamTheoPhanLoai", "Product", new { phanloai = "iphone" })">
+                                <img style="width:80px;height:40px" src="~/Image/logo-apple.jpg" alt="Alternate Text" />
+                            </a>
+                            <a style="margin-right: 20px; margin-top: 10px; float: left; margin-left: 8px " class="nav-link" href="@Url.Action("SanPhamTheoPhanLoai", "Product", new { phanloai = "samsung" })">
+                                <img style="width:80px;height:40px" src="~/Image/logo_ss.jpg" alt="Alternate Text" />
+                            </a>
+                            <a style="margin-right: 20px; margin-top: 10px; float: left; margin-left: 8px " class="nav-link" href="@Url.Action("SanPhamTheoPhanLoai", "Product", new { phanloai = "realme" })">
+                                <img style="width:80px;height:40px" src="~/Image/logo_realme.jpg" alt="Alternate Text" />
+                            </a>
+                            <a style="margin-right: 20px; margin-top: 10px; float: left; margin-left: 8px " class="nav-link" href="@Url.Action("SanPhamTheoPhanLoai", "Product", new { phanloai = "oppo" })">
+                                <img style="width:80px;height:30px" src="~/Image/oppo.png" alt="Alternate Text" />
+                            </a>
+                        </div>
                     </div>
 
 
@@ -78,7 +118,7 @@
                     <form action="/TimKiem/KQTimKiem" method="post">
 
                         <input  name="txtTimKiem" class="form_search " type="search" placeholder="Tìm kiếm" aria-label="Search">
-                        <button id="searchButton" class="search_icon" type="submit"><i class="fas fa-search"></i></button>
+                        
                     </form>
                     
                 </div>
@@ -124,7 +164,7 @@
                             </a>
                             <div class="sub-menu">
                                 <a style="float:left;margin-right:20px;color:black;" href="@Url.Action("LogOut", "LoginRegister")"><i style="margin-right:15px" class="fa-solid fa-right-to-bracket"></i>Đăng xuất</a>
-                                <a href="@Url.Action("TinhTrangDonHang","QlyNhapHang")">Lịch sử mua hàng</a>
+                                <a style="color: black; float: left; margin-right: 20px;" href="@Url.Action("TinhTrangDonHang","QlyNhapHang")"><i style="margin-right:15px" class="fa-solid fa-timeline"></i>Lịch sử mua hàng</a>
                                 <a style="float: left; margin-right: 20px; color: black;" href="@Url.Action("Index", "CustomerUpdate", new { IDUser = kh.IDUser })"><i style="margin-right:15px" class="fa-solid fa-user"></i>Cá nhân</a>
 
                             </div>

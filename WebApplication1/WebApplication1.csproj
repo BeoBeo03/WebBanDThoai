@@ -243,6 +243,9 @@
     <Content Include="Image\iphone5.jpg" />
     <Content Include="Image\logo-apple.jpg" />
     <Content Include="Image\logo.jpg" />
+    <Content Include="Image\logo_oppo.jpg" />
+    <Content Include="Image\logo_realme.jpg" />
+    <Content Include="Image\logo_ss.jpg" />
     <Content Include="Image\oppo.png" />
     <Content Include="Image\realmi.png" />
     <Content Include="Image\samsung-galaxy-a33-5g-500x500.jpg" />

@@ -239,17 +239,35 @@
         <div class="content">
             @*Danh muc*@
             <div class="title-big"> Bảng Thống Kê Doanh Số</div>
-            <div style="width:1200px" class="main-admin">
+            <div style="width:1400px" class="main-admin">
                 <div style="display:flex;justify-content:space-around;margin-left:100px;margin-bottom:50px" class="cards">
-                    <div style="border-radius: 10px; background: #f71313; padding: 10px; width: 300px; display: flex; margin-right: 50px" class="card-single1 ">
+                    <div style="border-radius: 10px; background: #13f71c; padding: 10px; width: 400px; display: flex; margin-right: 50px" class="card-single1 ">
                         <div style="margin-right:30px">
                             <span class="">
                                 <i style="font-size:2.5rem;" class="fa-regular fa-money-bill-1"></i>
                             </span>
                         </div>
                         <div>
+                            <h4>@string.Format("{0:0,0}", @TempData["TongDoanhThu"]) VNĐ</h4>
+                            <span style="margin-right:96px">Tổng lợi nhuận</span>
+                            <i class="fa-solid fa-circle-info"></i>
+                            <a href="@Url.Action("DanhSachDonHang","QlyNhapHang")">Chi tiết</a>
+                        </div>
+
+
+                    </div>
+                    <div style="border-radius: 10px; background: #f71313; padding: 10px; width: 350px; display: flex; margin-right: 50px" class="card-single1 ">
+                        <div style="margin-right:30px">
+                            <span class="">
+                                <i style="font-size:2.5rem;" class="fa-solid fa-calendar-week"></i>
+                               
+                            </span>
+                        </div>
+                        <div>
                             <h4>@ViewBag.CountOrderDetail</h4>
-                            <span>Tổng hóa đơn chi tiết</span>
+                            <span style=" margin-right: 30px;">Tổng hóa đơn chi tiết</span>
+                            <i class="fa-solid fa-circle-info"></i>
+                            <a href="@Url.Action("DanhSachDonHang","QlyNhapHang")">Chi tiết</a>
                         </div>
 
                     </div>
@@ -262,20 +280,24 @@
                         </div>
                         <div>
                             <h4>@ViewBag.CountProduct</h4>
-                            <span>Tổng các loại sản phẩm</span>
+                            <span style=" margin-right: 7px;">Tổng các loại sản phẩm</span>
+                            <i class="fa-solid fa-circle-info"></i>
+                            <a href="@Url.Action("Index","AdminProduct")">Chi tiết</a>
                         </div>
 
                     </div>
 
-                    <div style="border-radius: 10px; background: #13f71c; padding: 10px; width: 300px; display: flex; margin-right: 50px " class="card-single3">
+                    <div style="border-radius: 10px; background: #f77213; padding: 10px; width: 300px; display: flex; margin-right: 50px " class="card-single3">
                         <div style="margin-right:30px">
                             <span class="">
                                 <i style="font-size:2.5rem;" class="fa-solid fa-cart-flatbed-suitcase"></i>
                             </span>
                         </div>
                         <div>
-                            <h4>@ViewBag.CountOrder</h4>
-                            <span>Đơn đặt hàng</span>
+                            <h4>@TempData["TongDonHang"]</h4>
+                            <span style=" margin-right: 30px;">Đơn đặt hàng</span>
+                            <i class="fa-solid fa-circle-info"></i>
+                            <a href="@Url.Action("DanhSachChuaDuyet","QlyNhapHang")">Chi tiết</a>
                         </div>
 
                     </div>
